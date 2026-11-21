@@ -1,0 +1,19 @@
+import {VariantPrintTreatment} from './VariantPrintTreatment';
+import React,{useState} from 'react';
+import {ModalCard} from './ModalCard';
+import {EbookStyleFields} from './EbookStyleFields';
+import {createVariant,editVariant,deleteVariant,variantUsage} from '../shared/publicationVariants';
+import {ebookRoleStyle} from '../shared/ebookStyles';
+import {specialTextRoles,type SpecialTextRole} from '../shared/specialText';
+import type {Project} from '../shared/model';
+
+export function PublicationVariants({project,role,fonts,onChange}:{project:Project;role:SpecialTextRole;fonts:{family:string;available:boolean}[];onChange:(p:Project)=>void}){
+ const [action,setAction]=useState<{kind:'create'|'rename'|'delete';id?:string}>(),[name,setName]=useState(''),[error,setError]=useState('');
+ const plan=project.author.publication!,variants=plan?.specialTextVariants?.filter(v=>v.role===role)??[],target=variants.find(v=>v.id===action?.id);
+ const perform=(fn:()=>Project)=>{try{onChange(fn());setError('');return true;}catch(e){setError(String(e));return false;}};
+ const open=(kind:'create'|'rename'|'delete',id?:string)=>{setAction({kind,id});setName(variants.find(v=>v.id===id)?.name??'');setError('');};
+ return <section aria-label={`${specialTextRoles[role]} variants`} className="ebook-variants"><h4>Style variants</h4><button onClick={()=>open('create')}>New variant</button>{error&&!action&&<p role="alert">{error}</p>}
+ {variants.map(v=><details key={v.id}><summary>{v.name}</summary><p>{variantUsage(plan,v.id)} passage assignments. Unset properties inherit {specialTextRoles[role]} default.</p><VariantPrintTreatment project={project} variant={v} fonts={fonts} onChange={next=>perform(()=>next)}/><details open><summary>eBook treatment</summary><EbookStyleFields style={v.treatments.ebook} inherited={ebookRoleStyle(role,plan.ebook.options?.specialText)} fonts={fonts} onChange={style=>perform(()=>editVariant(project,v.id,{style}))}/></details><div className="ebook-variant-actions"><button onClick={()=>open('rename',v.id)}>Rename</button><button onClick={()=>perform(()=>createVariant(project,role,v.name.slice(0,115)+' Copy',v.id).project)}>Duplicate</button><button onClick={()=>perform(()=>editVariant(project,v.id,{style:{}}))}>Reset variant properties</button><button onClick={()=>open('delete',v.id)}>Delete variant</button></div></details>)}
+ {action&&<ModalCard label={action.kind==='delete'?'Delete style variant':action.kind==='rename'?'Rename style variant':'Create style variant'} onClose={()=>setAction(undefined)}><form onSubmit={e=>{e.preventDefault();if(action.kind!=='create'&&!target){setError('This variant is no longer available.');return;}if(perform(()=>action.kind==='delete'?deleteVariant(project,target!.id):action.kind==='rename'?editVariant(project,target!.id,{name}):createVariant(project,role,name).project))setAction(undefined);}}><h3>{action.kind==='delete'?'Delete style variant':action.kind==='rename'?'Rename style variant':'Create style variant'}</h3>{action.kind==='delete'?<p>Delete “{target?.name}”? Used by {target?variantUsage(plan,target.id):0} passage assignments. Those passages return to {specialTextRoles[role]} default, including clearing their one-off overrides. Prose is unchanged.</p>:<label>Name<input autoFocus value={name} maxLength={120} onChange={e=>setName(e.target.value)}/></label>}{action.kind==='create'&&<p>Inherits {specialTextRoles[role]} default. Use Duplicate to copy another variant.</p>}{error&&<p role="alert">{error}</p>}<button type="button" autoFocus={action.kind==='delete'} onClick={()=>setAction(undefined)}>Cancel</button><button type="submit" disabled={action.kind!=='delete'&&!name.trim()}>{action.kind==='delete'?'Delete variant':action.kind==='rename'?'Rename':'Create'}</button></form></ModalCard>}
+ </section>;
+}

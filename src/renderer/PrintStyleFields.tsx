@@ -1,0 +1,8 @@
+import {specialTextStyle,type SpecialTextRole,type SpecialTextStyle} from '../shared/specialText';
+import type {PublicationPlan} from '../shared/publication';
+import {NumberField} from './PrintControls';
+import {PublishCheck} from './PublishCheck';
+export function PrintStyleFields({plan,role,style,base,fonts,onChange}:{plan:PublicationPlan;role:SpecialTextRole;style:SpecialTextStyle;base?:SpecialTextStyle;fonts:{family:string;available:boolean}[];onChange:(s:SpecialTextStyle)=>void}){
+ const value={...specialTextStyle(role,plan.style.specialText,plan.style.print),...base,...style},set=(key:keyof SpecialTextStyle,v:unknown)=>onChange({...style,[key]:v});
+ return <><label>Print font<select aria-label="Print font" value={value.font==='serif'?'Libertinus Serif':value.font} onChange={e=>set('font',e.target.value)}>{!fonts.some(f=>f.family===value.font)&&value.font!=='serif'&&<option>{value.font}</option>}{fonts.map(f=><option key={f.family} disabled={!f.available}>{f.family}</option>)}</select></label>{([['sizePt','Print size (pt)',6,36],['lineHeight','Print line spacing',1,2.5],['leftPt','Print start inset (pt)',0,72],['rightPt','Print end inset (pt)',0,72],['spacePt','Print paragraph / stanza spacing (pt)',0,72]] as const).map(([key,label,min,max])=><NumberField key={key} label={label} value={value[key]} min={min} max={max} change={n=>set(key,n)}/>)}<label>Print alignment<select aria-label="Print alignment" value={value.alignment} onChange={e=>set('alignment',e.target.value)}>{['left','center','right'].map(a=><option key={a}>{a}</option>)}</select></label><PublishCheck checked={value.italic} onChange={e=>set('italic',e.target.checked)}>Print italics</PublishCheck></>;
+}

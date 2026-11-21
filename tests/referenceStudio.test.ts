@@ -1,0 +1,9 @@
+import {describe,it,expect} from 'vitest';
+import {blank,defaultAuthor,type Project} from '../src/shared/model';
+import {createResearchItem,researchSearch,trashResearchItem} from '../src/shared/research';
+import {createCollection,removeCollectionMembers} from '../src/shared/collections';
+const project=():Project=>({manifest:{id:crypto.randomUUID(),title:'Reference QA',version:1,revision:0,nodes:[],settings:{editor:{},publication:{},workspace:{}}},documents:{},author:defaultAuthor(),recovery:[]});
+describe('Reference workspace isolation and Trash filtering',()=>{
+ it('keeps active and Trash search disjoint and restores the same source',()=>{const made=createResearchItem(project(),{type:'text',ownership:'none',title:'雪 Harbor archive'}),trashed=trashResearchItem(made.project,made.id);expect(researchSearch(trashed,'Harbor')).toEqual([]);expect(researchSearch(trashed,'Harbor',{trashed:true,type:'text'}).map(i=>i.id)).toEqual([made.id]);expect(researchSearch(trashed,'Harbor',{trashed:true,type:'pdf'})).toEqual([]);expect(researchSearch(trashed,'other',{trashed:true})).toEqual([]);const restored=trashResearchItem(trashed,made.id,false);expect(researchSearch(restored,'Harbor').map(i=>i.id)).toEqual([made.id]);expect(researchSearch(restored,'',{trashed:true})).toEqual([])});
+ it('never changes source data or prose when removing a reference member',()=>{const made=createResearchItem(project(),{type:'text',ownership:'none',title:'Source'}),group=createCollection(made.project,'Grouping',blank(),[{type:'research',id:made.id,fallbackLabel:'Source'}]),before=structuredClone(group.project.author.research);const result=removeCollectionMembers(group.project,group.id,['research:'+made.id]);expect(result.author.research).toEqual(before);expect(result.documents).toEqual(group.project.documents);expect(result.author.collections!.items[0].members).toEqual([])});
+});

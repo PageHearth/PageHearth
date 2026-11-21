@@ -1,0 +1,127 @@
+{
+  "name": "pagehearth",
+  "version": "0.1.2",
+  "description": "A free, open-source, local-first writing and publishing studio for authors.",
+  "main": "dist-main/main/main.js",
+  "scripts": {
+    "pack:win": "npm run build && npm run docs:offline && electron-builder --win --dir",
+    "test": "vitest run",
+    "build": "tsc --noEmit && tsc -p tsconfig.main.json && vite build",
+    "start": "npm run build && electron .",
+    "test:e2e": "npm run build && playwright test",
+    "dist:win": "npm run build && npm run docs:offline && electron-builder --win nsis",
+    "docs:offline": "node scripts/build-offline-guide.mjs && node scripts/build-distribution-legal.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MPL-2.0",
+  "type": "module",
+  "dependencies": {
+    "@cspell/dict-en_us": "4.4.43",
+    "@tiptap/core": "3.31.3",
+    "@tiptap/extension-code": "3.31.3",
+    "@tiptap/extension-code-block": "3.31.3",
+    "@tiptap/extension-link": "^3.31.3",
+    "@tiptap/extension-task-item": "^3.31.3",
+    "@tiptap/extension-task-list": "^3.31.3",
+    "@tiptap/pm": "3.31.3",
+    "@tiptap/react": "^3.31.3",
+    "@tiptap/starter-kit": "^3.31.3",
+    "cspell-dictionary": "10.4.0",
+    "diff": "^9.0.0",
+    "docx": "9.15.1",
+    "fflate": "^0.8.3",
+    "mammoth": "1.13.0",
+    "markdown-it": "15.0.3",
+    "parse5": "8.0.1",
+    "pdfjs-dist": "6.4.299",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "saxes": "6.0.0",
+    "semver": "7.8.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.13.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/semver": "^7.8.0",
+    "electron": "44.11.1",
+    "electron-builder": "^26.15.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  },
+  "build": {
+    "appId": "com.pagehearth.desktop",
+    "win": {
+      "target": "nsis",
+      "executableName": "PageHearth",
+      "icon": "assets/branding/pagehearth/PageHearth_App_Icon.ico"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-main/**/*",
+      "assets/branding/pagehearth/*",
+      "package.json",
+      "assets/licenses/**/*",
+      "LICENSE",
+      "LICENSING.md"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "productName": "PageHearth",
+    "extraResources": [
+      {
+        "from": "assets/epub",
+        "to": "epub"
+      },
+      {
+        "from": "assets/branding/pagehearth/PageHearth_App_Icon.ico",
+        "to": "branding/PageHearth_App_Icon.ico"
+      },
+      {
+        "from": "assets/typst",
+        "to": "typst"
+      },
+      {
+        "from": "dist-documentation",
+        "to": "documentation"
+      },
+      {
+        "from": "dist-legal",
+        "to": "documentation/legal"
+      }
+    ],
+    "nsis": {
+      "installerIcon": "assets/branding/pagehearth/PageHearth_Install_Icon.ico",
+      "createDesktopShortcut": true,
+      "shortcutName": "PageHearth",
+      "allowToChangeInstallationDirectory": true,
+      "createStartMenuShortcut": true,
+      "oneClick": false,
+      "uninstallerIcon": "assets/branding/pagehearth/PageHearth_Install_Icon.ico",
+      "artifactName": "PageHearth-Setup-${version}.${ext}",
+      "include": "build/pagehearth.nsh",
+      "installerHeader": "build/branding/header.bmp",
+      "installerSidebar": "build/branding/sidebar.bmp",
+      "uninstallerSidebar": "build/branding/sidebar.bmp",
+      "menuCategory": "PageHearth"
+    },
+    "fileAssociations": [
+      {
+        "ext": "pagehearth",
+        "name": "PageHearth.Project",
+        "description": "PageHearth project manifest",
+        "role": "Editor",
+        "icon": "assets/branding/pagehearth/PageHearth_File_Icon.ico"
+      }
+    ],
+    "publish": null
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThatsHush/StoryLoom.git"
+  }
+}

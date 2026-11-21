@@ -1,0 +1,7 @@
+import type {WindowTitleBar} from '../shared/themes';
+export function WindowTitleBarSetting({value,onChange,supported,readOnly=false}:{value?:WindowTitleBar;onChange:(value:WindowTitleBar)=>void;supported:boolean;readOnly?:boolean}){
+ const mode=value?.mode??'system';
+ return <fieldset className="window-title-setting"><legend>Window title bar</legend><label>Color source<select aria-label="Window title bar" value={mode} disabled={readOnly||!supported} onChange={e=>onChange(e.target.value==='custom'?{mode:'custom',color:'#805030'}:{mode:e.target.value as 'system'|'theme'})}><option value="system">Follow Windows</option><option value="theme">Use theme accent</option><option value="custom">Custom color…</option></select></label>
+ {mode==='custom'&&<label className="window-title-color">Custom title-bar color<input type="color" aria-label="Custom title-bar color" value={value?.mode==='custom'?value.color:'#805030'} disabled={readOnly||!supported} onChange={e=>onChange({mode:'custom',color:e.target.value})}/><output>{value?.mode==='custom'?value.color:''}</output></label>}
+ <p>{!supported?'Native title-bar coloring is available on Windows only. This theme’s setting is preserved on other platforms.':readOnly?'Duplicate or customize a theme to change its title-bar color.':'Follow Windows uses your Windows settings. The other choices apply only to PageHearth’s native windows after you save the theme.'}</p></fieldset>;
+}

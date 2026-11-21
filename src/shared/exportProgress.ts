@@ -1,0 +1,7 @@
+import type {ExportFormat} from './exportPublication.js';
+export const exportStages=['preparing','pdf-render','pdf-ready','epub-build','epub-check-53','epub-check-54','docx-build','serialize','destination','overwrite','write'] as const;
+export type ExportStage=typeof exportStages[number];
+export type ExportProgress={projectId:string;requestId:string;format:ExportFormat;stage:ExportStage;destination?:string};
+export const isExportStage=(value:unknown):value is ExportStage=>typeof value==='string'&&(exportStages as readonly string[]).includes(value);
+export function matchesExportProgress(event:ExportProgress,active:Pick<ExportProgress,'projectId'|'requestId'|'format'>){return event.projectId===active.projectId&&event.requestId===active.requestId&&event.format===active.format&&isExportStage(event.stage);}
+export function exportStageText(stage:ExportStage,format:ExportFormat){switch(stage){case 'preparing':return 'Preparing book…';case 'pdf-render':return 'Rendering Final Print Preview…';case 'pdf-ready':return 'Preparing verified PDF…';case 'epub-build':return 'Building EPUB…';case 'epub-check-53':return 'Validating EPUB · EPUBCheck 5.3…';case 'epub-check-54':return 'Validating EPUB · EPUBCheck 5.4…';case 'docx-build':return 'Creating DOCX…';case 'serialize':return 'Preparing '+(format==='md'?'Markdown':format.toUpperCase())+' content and assets…';case 'destination':return 'Choose a destination in the Save dialog…';case 'overwrite':return 'Waiting for replacement confirmation…';case 'write':return 'Writing '+format.toUpperCase()+' file…';}}

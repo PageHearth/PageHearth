@@ -1,0 +1,8 @@
+import {it,expect,vi} from 'vitest';
+import {openReferenceTarget} from '../src/main/referenceNavigation';
+import type {Project} from '../src/shared/model';
+const project={author:{worldBible:{entities:[{id:'character-id',type:'character',name:'Renamed Mina'},{id:'location-id',type:'location',name:'Port'},{id:'lore-id',type:'lore',name:'Legend'},{id:'custom-id',type:'custom-category',name:'Artifact'},{id:'trash-id',type:'character',trashed:true}]}}} as Project;
+const ports=()=>({unavailable:vi.fn().mockResolvedValue(undefined),bringDetached:vi.fn().mockReturnValue(false),openEntity:vi.fn()});
+it.each(['character-id','location-id','lore-id','custom-id'])('routes %s through canonical entity navigation without mutation',async id=>{const p=ports(),before=JSON.stringify(project);await openReferenceTarget(project,id,p);expect(p.openEntity).toHaveBeenCalledWith(id);expect(p.unavailable).not.toHaveBeenCalled();expect(JSON.stringify(project)).toBe(before);});
+it('does not resolve by visible names; missing and trashed targets are conservative',async()=>{for(const id of ['Renamed Mina','missing','trash-id']){const p=ports();await openReferenceTarget(project,id,p);expect(p.openEntity).not.toHaveBeenCalled();expect(p.unavailable).toHaveBeenCalledWith(id==='trash-id'?'Reference target is in Trash.':'Reference target is missing.');}});
+it('reveals existing detached entity without opening another surface',async()=>{const p=ports();p.bringDetached.mockReturnValue(true);await openReferenceTarget(project,'character-id',p);expect(p.bringDetached).toHaveBeenCalledWith('character-id');expect(p.openEntity).not.toHaveBeenCalled();});

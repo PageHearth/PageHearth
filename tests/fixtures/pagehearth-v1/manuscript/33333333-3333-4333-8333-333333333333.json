@@ -1,0 +1,22 @@
+{
+  "type": "doc",
+  "content": [
+    {
+      "type": "paragraph",
+      "attrs": {
+        "indent": 1
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Preserve this prose 1 世界",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

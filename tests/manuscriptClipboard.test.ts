@@ -1,0 +1,14 @@
+import {it,expect,vi} from 'vitest';
+import {manuscriptClipboard} from '../src/main/manuscriptClipboard.js';
+import {manuscriptImageContextMenu} from '../src/main/manuscriptImageContextMenu.js';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+import {promises as fs} from 'node:fs';
+const item=(values:Record<string,string|Uint8Array>)=>({types:Object.keys(values),getType:async(type:string)=>new Blob([values[type] as BlobPart])});
+it('uses image data before text/file alternatives',async()=>{const encode=vi.fn(()=>Buffer.from('png'));expect(await manuscriptClipboard([item({'text/plain':'text','image/png':new Uint8Array([1]) ,'text/uri-list':'file:///missing.png'})],encode)).toEqual(Buffer.from('png'));expect(encode).toHaveBeenCalledOnce();});
+it('returns no image for empty/text-only clipboard',async()=>{const encode=vi.fn();expect(await manuscriptClipboard([],encode)).toBeUndefined();expect(await manuscriptClipboard([item({'text/plain':'Hello'})],encode)).toBeUndefined();expect(encode).not.toHaveBeenCalled();});
+it('imports the local Explorer file-copy representation without interpreting it as a bitmap',async()=>{const file=path.resolve('assets/branding/pagehearth/PageHearth_App_Icon.png'),encode=vi.fn();expect(await manuscriptClipboard([item({'text/uri-list':pathToFileURL(file).href+'\r\n'})],encode)).toEqual(await fs.readFile(file));expect(encode).not.toHaveBeenCalled();});
+it('rejects remote, multiple, unsupported and missing file copies',async()=>{for(const value of ['https://example.com/a.png','file://server/share/a.png','file:///C:/a.png\r\nfile:///C:/b.png','file:///C:/a.txt','file:///C:/missing-image-for-qa.png'])await expect(manuscriptClipboard([item({'text/uri-list':value})],vi.fn())).rejects.toThrow();});
+it('reports a failed decode rather than silently losing the paste',async()=>{await expect(manuscriptClipboard([item({'image/png':new Uint8Array([1])})],()=>Buffer.alloc(0))).rejects.toThrow('could not be read');});
+it('tries later image representations when the first cannot decode',async()=>{expect(await manuscriptClipboard([item({'image/invalid':new Uint8Array([0]),'image/png':new Uint8Array([1])})],bytes=>bytes[0]?Buffer.from('png'):Buffer.alloc(0))).toEqual(Buffer.from('png'));});
+it('routes prose insertion and selected-image actions through shared guarded callbacks',()=>{const run=vi.fn(),prose=manuscriptImageContextMenu(false,run),image=manuscriptImageContextMenu(true,run);expect(prose.map(x=>x.label).filter(Boolean)).toEqual(['Insert Image…','Paste Image']);expect(image.map(x=>x.label).filter(Boolean)).toEqual(['Replace Image…','Image Properties…','Copy','Remove Image']);for(const entry of image)if(entry.click)(entry.click as Function)();expect(run.mock.calls.flat()).toEqual(['insert-image','image-properties','copy','remove']);});

@@ -1,0 +1,93 @@
+@import './designFoundation.css';
+/* Surrounding production UI only. PDF canvases, eBook iframe and cover geometry
+   retain their renderer-owned dimensions, fonts and output colors. */
+.publish-workspace.publish-studio{grid-template-columns:minmax(180px,220px) minmax(0,1fr) minmax(260px,320px);grid-template-rows:auto minmax(0,1fr);background:var(--canvas);font-family:var(--font-ui)}
+.publish-introduction{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
+.publish-studio .publish-introduction h1{font:600 25px/1.3 var(--font-display)}
+.publish-introduction p{font-size:12px;color:var(--muted);margin:4px 0}
+.publish-introduction .eyebrow{font-size:10px;letter-spacing:1px}
+.publish-introduction a{font-size:12px;color:var(--text);white-space:nowrap;text-underline-offset:3px}
+.publish-studio :is(.publication-content,.publication-settings){padding:16px 14px}
+.publish-studio .publication-preview{padding:18px 22px;background:var(--canvas)}
+.publish-studio :is(button,input,select,textarea),.export-dialog :is(button,input,select,textarea){font-family:var(--font-ui);font-size:12px;border-radius:var(--radius-small);max-width:100%;min-width:0}
+.publish-studio :is(button,input,select,textarea,summary,a):focus-visible,.export-dialog :is(button,input,select,textarea,summary):focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.publish-studio :is(input,select,textarea),.export-dialog :is(input,select,textarea){background:var(--input-background);color:var(--text);border-color:var(--line)}
+.publish-studio button:not(.primary){background:transparent}
+.publish-studio button:hover:not(:disabled){background:var(--hover-surface);color:var(--text)}
+.publish-studio button:disabled{cursor:default}
+.publish-studio :is(.publication-settings,.publication-preview,.publication-content) :is(p,small){overflow-wrap:anywhere}
+.publish-studio :is(.publication-settings,.print-proof,.ebook-preview,.covers-workspace,.publication-preflight) p{font-size:12px;line-height:1.6}
+.publish-studio :is(.publication-settings,.publication-content) h2{font:600 21px/1.4 var(--font-display);margin:0 0 8px}
+.publish-studio .publication-help{color:var(--muted);font-size:11px;line-height:1.5}
+.publish-studio .publication-content h3{font:600 10px/1.4 var(--font-ui);text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 6px}
+.publish-studio .publication-content li{margin:2px 0}
+.publish-studio .publication-content-item{position:relative;padding:7px 9px;min-height:35px;border-color:transparent;background:transparent;gap:2px;line-height:1.4;overflow:visible}
+.publish-studio .publication-content-item[data-depth="1"]{padding-left:17px}
+.publish-studio .publication-content-item[data-depth="2"]{padding-left:25px}
+.publish-studio .publication-content-item[data-depth="3"]{padding-left:33px}
+.publish-studio .publication-row-title{display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:100%;font-size:12px}
+.publish-studio .publication-content-item small{font-size:10px;color:var(--muted)}
+.publish-studio .publication-content-item[aria-current=true]{outline:0;background:var(--active-surface);box-shadow:inset 3px 0 var(--accent)}
+.publish-studio .publication-content-item[aria-current=true]:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.publication-title-tip{position:fixed;z-index:200;left:0;top:0;width:max-content;max-width:min(360px,calc(100vw - 16px));max-height:60vh;overflow:auto;padding:8px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:var(--radius-small);white-space:normal;overflow-wrap:anywhere;box-shadow:var(--shadow-soft);font-size:12px;font-weight:400;pointer-events:auto}
+.publish-studio .publication-add{border-top:1px solid var(--line);padding-top:6px;margin-top:8px}
+.publish-studio .publication-add label{font-size:11px;color:var(--muted)}
+.publish-studio .proof-tools{padding:8px 0;gap:6px}
+.publish-studio .proof-tools[aria-label=Output]{border-bottom:1px solid var(--line);margin-bottom:6px}
+.publish-studio .proof-tools button[aria-pressed=true]{background:var(--active-surface);box-shadow:inset 0 -2px var(--accent);font-weight:600}
+.publish-studio :is(.print-proof,.ebook-preview,.covers-workspace)>:is(h1,h2),.publish-studio .publication-preview>header h1{font:600 24px/1.35 var(--font-display);margin:12px 0 6px}
+.publish-studio .publication-settings>section[aria-label="Book Style"]>h3{font:600 21px/1.4 var(--font-display);margin:24px 0 8px}
+.publish-studio .publication-settings details{margin:12px 0;padding:12px 0 0}
+.publish-studio summary,.export-dialog summary{cursor:pointer;line-height:1.5;font-size:13px;font-weight:600;overflow-wrap:anywhere}
+.publish-studio .publication-settings label{font-size:12px;margin:10px 0;gap:5px}
+.publish-studio .publication-settings fieldset{min-width:0;border:0;border-top:1px solid var(--line);margin:16px 0;padding:10px 0 0}
+.publish-studio legend{font:600 12px/1.4 var(--font-ui);padding:0 6px 0 0}
+.publish-studio .publication-settings small{font-size:11px;color:var(--muted);line-height:1.5}
+.publish-studio .shared-variant-editor{border-inline-start:3px solid var(--accent);padding:10px;background:var(--active-surface)}
+.publish-studio .passage-override{border:1px dashed var(--line);padding:10px;border-radius:var(--radius-control)}
+.publish-studio .passage-override h4,.publish-studio .shared-variant-editor h4{font-size:13px;margin:0 0 8px}
+.publish-studio .reader-simulation{padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--panel);margin:12px 0}
+.publish-studio .reader-simulation p{color:var(--muted);margin:6px 0}
+.publish-studio .ebook-reader-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:6px 12px;margin:8px 0}
+.publish-studio .ebook-reader-controls label{font-size:12px}
+.publish-studio .proof-tools label{font-size:12px;flex:0 1 110px}
+.publish-studio .publication-item-controls{padding:10px 0;gap:8px;font-size:12px}
+.publish-studio .publication-item-controls strong{max-width:100%;overflow-wrap:anywhere}
+.publish-studio .publication-item-controls{align-items:flex-start;flex-direction:column}
+.publish-studio .publication-matter-actions{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;max-width:100%}
+.publish-studio .publication-matter-actions>label{margin:0}
+.publish-studio .publication-order-controls{display:flex;gap:6px;flex:none}
+.publish-studio .publication-matter-actions :is(button,select){min-height:34px;margin:0}
+.publish-studio .proof-navigation{align-items:flex-end;gap:12px}
+.publish-studio .proof-navigation>label{margin:0;gap:5px}
+.publish-studio .proof-page-group{display:flex;flex-direction:column;gap:5px;max-width:100%;font-size:12px}
+.publish-studio .proof-page-controls{display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px;max-width:100%}
+.publish-studio .proof-page-controls input{width:4.5em;flex:0 1 4.5em}
+.publish-studio .proof-navigation :is(button,input,select){min-height:34px;margin:0}
+.publish-studio .publication-render-status,.export-dialog .publication-render-status{min-height:3em;font-size:12px;line-height:1.5}
+.publish-studio .publication-export-launcher{border-top:1px solid var(--line);padding-top:18px;margin-top:20px}
+.publish-studio .publication-export-launcher>button{width:100%;margin:8px 0}
+.preflight-summary{border-inline-start:3px solid var(--success);padding:8px 12px;background:var(--panel);font-size:13px}
+.preflight-summary.has-warnings{border-color:var(--warning)}
+.preflight-summary.needs-attention{border-color:var(--danger)}
+.preflight-blocking{border-inline-start:3px solid var(--danger);padding:10px 12px;color:var(--danger)}
+.publication-warnings{border-top:1px solid var(--line);padding-top:10px;margin:12px 0}
+.publication-warnings>summary{color:var(--warning)}
+.preflight-technical{margin-top:12px;color:var(--muted);font-size:11px;overflow-wrap:anywhere}
+.preflight-blocking li,.publication-warnings li{margin:8px 0;font-size:12px;line-height:1.6}
+.preflight-blocking small,.publication-warnings small{display:block;color:var(--muted)}
+.publish-studio .publication-issue-action{margin:4px 0;font-size:11px}
+.publish-studio .covers-workspace fieldset{border-color:var(--line);border-radius:var(--radius-control);padding:12px}
+.publish-studio .cover-proof-toolbar{border-radius:var(--radius-control);background:var(--panel)}
+.publish-studio .cover-controls-grid{gap:0 16px}
+.publish-studio .cover-diagnostics{font-size:12px;line-height:1.5}
+.export-dialog{font-family:var(--font-ui);background:var(--page);color:var(--text)}
+.export-dialog h2{font:600 24px/1.4 var(--font-display)}
+.export-dialog .export-workspace{font-size:13px}
+.export-dialog fieldset{border:0;border-top:1px solid var(--line);padding:12px 0}
+.export-dialog legend{font-weight:600;padding:0 8px 0 0}
+.export-dialog input,.export-dialog select{width:100%;max-width:100%}
+.export-dialog .publish-check input{width:1em}
+@media(max-width:1200px){.publish-workspace.publish-studio{grid-template-columns:minmax(170px,210px) minmax(0,1fr);grid-template-rows:auto minmax(480px,1fr) auto;height:auto;min-height:100%;overflow:visible}.publish-studio .publication-settings{grid-column:1/-1;max-height:none;overflow:visible;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}.publish-studio .publication-settings>h2,.publish-studio .publication-settings>.publication-help{grid-column:1/-1}.publish-studio .publication-content{max-height:80vh}.publish-studio .publication-preview{overflow:visible}}
+@media(max-width:700px){.publish-workspace.publish-studio,.publish-workspace.publish-studio:has(.ebook-preview){display:flex;flex-direction:column;height:auto;overflow:visible}.publish-introduction{padding:12px;align-items:flex-start;flex-wrap:wrap}.publish-studio .publication-content{max-height:240px;min-height:120px;flex:none;overflow:auto;border-bottom:1px solid var(--line)}.publish-studio .publication-content ul{max-height:none;overflow:visible}.publish-studio .publication-settings{display:block;max-height:none;overflow:visible}.publish-studio .publication-preview{padding:14px 12px;overflow:visible;flex:none}.publish-studio .cover-controls-grid{grid-template-columns:minmax(0,1fr)}.publish-studio .publication-content-item{max-width:100%}}
+

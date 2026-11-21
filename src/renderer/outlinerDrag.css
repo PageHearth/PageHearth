@@ -1,0 +1,7 @@
+.outliner-drag-handle{touch-action:none}
+.outliner-drag-preview{position:fixed;top:0;left:0;z-index:10000;box-sizing:border-box;pointer-events:none;display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid var(--accent);border-radius:8px;background:var(--panel);color:inherit;box-shadow:0 6px 18px var(--shadow);will-change:transform;overflow:hidden}
+.outliner-drag-preview .structure-label{display:flex;flex-direction:column;min-width:0}
+.outliner-drag-preview strong,.outliner-drag-preview small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.outliner-drag-invalid{display:none}.outliner-drag-preview[data-invalid=true]{border-style:dashed}.outliner-drag-preview[data-invalid=true] .outliner-drag-invalid{display:block}
+.outliner-grid [data-outliner-origin=true]{opacity:.3}
+.outliner-workspace{display:flex;flex-direction:column;min-height:0;overflow:hidden}.outliner-workspace>.outliner-grid{flex:1;min-height:0;min-width:0;align-content:start}.outliner-workspace>.workspace-tools,.outliner-workspace>.column-chooser,.outliner-workspace>.mode-banner{flex-shrink:0}

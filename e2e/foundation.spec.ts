@@ -1,0 +1,56 @@
+import {createProject} from './new-project';
+import { test, expect, _electron as electron } from '@playwright/test';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+test('formatted prose survives modes, autosave, close and restart; executable is branded',async()=>{
+  const parent=await fs.mkdtemp(path.join(os.tmpdir(),'pagehearth-e2e-')),root=path.join(parent,'Novel');
+  const profile=await fs.mkdtemp(path.join(os.tmpdir(),'pagehearth-profile-'));
+  const executablePath=process.env.PAGEHEARTH_EXECUTABLE;
+  const launch=()=>electron.launch({...(executablePath?{executablePath}:{}),args:[...(executablePath?[]:['.']),`--user-data-dir=${profile}`]});
+  let app=await launch();
+  try {
+    await app.evaluate(({dialog},root)=>{dialog.showOpenDialog=async()=>({canceled:false,filePaths:[root]});},parent);
+    let page=await app.firstWindow();
+    const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+    await createProject(page,'Novel');
+    await expect(page.getByRole('button',{name:'WRITE',exact:true})).toHaveClass('active');
+    // ProseMirror exposes a contenteditable element without an explicit textbox role.
+    const prose=page.locator('[aria-label="Manuscript editor"]');
+    await prose.click();await page.keyboard.type('A quiet beginning. ');await page.keyboard.press('Control+b');await page.keyboard.type('Bold promise.');await page.keyboard.press('Control+b');
+    await expect(page.locator('footer')).toContainText('Saved');
+    await page.getByRole('button',{name:'PUBLISH',exact:true}).click();await page.getByRole('button',{name:'Chapter 1 Chapter · Manuscript',exact:true}).click();
+    await expect(page.locator('.publication-draft-page')).toContainText('Bold promise.');
+    await expect(page.locator('.publication-draft-page strong')).toHaveText('Bold promise.');
+    await page.getByRole('button',{name:'WRITE',exact:true}).click();
+    await page.getByLabel('New document title').fill('Second chapter');await page.getByRole('button',{name:'Add',exact:true}).click();
+    await expect(page.locator('.page h1')).toHaveText('Second chapter');
+    await page.locator('[aria-label="Manuscript editor"]').fill('Another scene.');
+    await page.getByRole('button',{name:/Chapter 1/}).click();
+    await expect(page.locator('.page h1')).toHaveText('Chapter 1');
+    await page.getByRole('button',{name:/Second chapter/}).dragTo(page.getByRole('button',{name:/Chapter 1/}));
+    await expect(page.locator('.tree-row').first()).toContainText('Second chapter');
+    await expect(page.locator('footer')).toContainText('Saved');
+    await app.evaluate(({Menu})=>Menu.getApplicationMenu()!.getMenuItemById('theme-dark')!.click());
+    await page.screenshot({path:'test-results/write.png'});
+    const closed=app.waitForEvent('close');
+    await app.evaluate(({BrowserWindow})=>{setTimeout(()=>BrowserWindow.getAllWindows()[0].close(),20);});
+    await closed;
+    const manifest=JSON.parse(await fs.readFile(path.join(root,'project.pagehearth'),'utf8'));
+    expect(manifest.nodes[0].title).toBe('Second chapter');
+    const saved=JSON.parse(await fs.readFile(path.join(root,'manuscript',manifest.nodes.find((n:any)=>n.title==='Chapter 1').id+'.json'),'utf8'));
+    expect(saved.content[0].content.some((n:any)=>n.marks?.some((m:any)=>m.type==='bold'))).toBe(true);
+    expect((await fs.readdir(path.join(root,'backups'))).length).toBeGreaterThan(0);
+    app=await launch();await app.evaluate(({dialog},root)=>{dialog.showOpenDialog=async()=>({canceled:false,filePaths:[root]});},root);page=await app.firstWindow();
+    await page.getByRole('button',{name:'Open Project…'}).click();
+    await expect(page.getByRole('button',{name:'WRITE',exact:true})).toHaveClass('active');
+    await expect(page.locator('.tree-row').first()).toContainText('Second chapter');
+    await page.getByRole('button',{name:/Chapter 1/}).click();
+    await expect(page.locator('[aria-label="Manuscript editor"]')).toContainText('A quiet beginning. Bold promise.');
+    await expect(page.locator('html')).toHaveAttribute('data-theme','Dark');
+    expect(errors).toEqual([]);
+    const closedAgain=app.waitForEvent('close');
+    await app.evaluate(({BrowserWindow})=>{setTimeout(()=>BrowserWindow.getAllWindows()[0].close(),20);});
+    await closedAgain;
+  } finally {await app.close().catch(()=>{});await fs.rm(parent,{recursive:true,force:true});await fs.rm(profile,{recursive:true,force:true});}
+});

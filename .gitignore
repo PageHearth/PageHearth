@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-main/
+release/
+
+# Testing / coverage
+test-results/
+playwright-report/
+.acceptance/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+tmp/
+temp/
+.cache/
+
+# Windows junk
+Thumbs.db
+Desktop.ini
+
+# macOS junk
+.DS_Store
+
+# IDE-local files
+.idea/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Generated offline documentation distribution
+dist-documentation/
+
+# Generated accessible distribution notices
+dist-legal/

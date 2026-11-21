@@ -1,0 +1,55 @@
+/* Phase 4 writing desk. Opt in only for WRITE/Editor and the detached Inspector.
+   Prose typography, pagination, view preferences and all canonical data stay authoritative. */
+.write-studio .workspace>aside{background:var(--panel);border-color:var(--line)}
+.write-studio .workspace>aside:first-child{padding:16px 10px 12px}
+.write-studio .tree-header{padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.write-studio .tree-header .panel-title{font:600 14px var(--font-ui);letter-spacing:.2px;color:var(--text)}
+.write-studio .tree-actions button{background:transparent;border-color:transparent;color:var(--muted)}
+.write-studio .tree-actions button:hover{background:var(--hover-surface);color:var(--text)}
+.write-studio .tree-row{border-radius:var(--radius-small);padding-block:5px;font-size:12px;line-height:1.35;color:var(--text);background:transparent}
+.write-studio .tree-entry[data-kind=Part]{margin-top:10px}
+.write-studio .tree-entry[data-kind=Part] .tree-title{font-weight:700;letter-spacing:.15px}
+.write-studio .tree-entry[data-kind=Chapter] .tree-title{font-weight:600}
+.write-studio .tree-entry[data-kind=Scene] .tree-row{font-size:12px;padding-block:4px}
+.write-studio .tree-row:hover{background:var(--hover-surface)}
+.write-studio .tree-row[aria-current=true]{background:var(--active-surface);border-inline-start:3px solid var(--accent);font-weight:600}
+.write-studio .tree-row.selected,.write-studio .tree-row.multi-selected{background:var(--selection);color:var(--selection-text)}
+.write-studio .tree-row:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.write-studio .scene-setting{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.write-studio .panel-resize:hover,.write-studio .panel-resize:focus-visible{background:var(--active-surface);outline-color:var(--focus)}
+.write-studio .editor-command-bar{background:var(--panel);height:44px;padding-inline:8px;gap:8px}
+.write-studio .editor-command-bar button,.write-studio .editor-command-bar select{border-color:transparent;background:transparent;border-radius:var(--radius-small)}
+.write-studio .editor-command-bar button:hover,.write-studio .editor-command-bar select:hover{background:var(--hover-surface)}
+.write-studio .editor-command-bar .smart-font-trigger,.write-studio .editor-command-bar .font-size-trigger{background:var(--input-background);border-color:var(--line)}
+/* Inset separators add no width: measured overflow still sees exact control bounds. */
+.write-studio .editor-command-bar :is(.format-heading,.format-undo,[data-editor-command=insert-image]){border-inline-start-color:var(--line)}
+.write-studio .editor-command-bar button[aria-pressed=true],.write-studio .editor-command-bar button[aria-pressed=mixed]{background:var(--active-surface);color:var(--text);border-color:var(--line)}
+.write-studio .editor-command-bar :is(button,select):focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.write-studio .special-text-status{background:var(--panel);font-size:11px;color:var(--muted);padding-inline:12px}
+.write-studio .draft-scroll .page{box-shadow:0 1px 4px var(--shadow)}
+.write-studio .draft-rail{background:var(--panel)}
+.write-studio .draft-page-list button{border-radius:var(--radius-small)}
+.write-studio .draft-page-list button:hover{background:var(--hover-surface)}
+.write-studio .editor-pane-header{background:var(--panel);border-color:var(--line)}
+.write-studio .editor-pane-header button{background:transparent;border-color:transparent}
+.write-studio .editor-pane-header button[aria-pressed=true]{background:var(--active-surface)}
+:is(.write-studio .inspector,.editor-studio-inspector){font-family:var(--font-ui);font-size:12px}
+.write-studio .inspector-scroll>.panel-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;letter-spacing:.5px;color:var(--text);margin-bottom:2px}
+.write-studio .inspector-scroll>.panel-title button{background:transparent;color:var(--muted);border-color:transparent}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-identity{padding-block:8px;background:transparent;gap:8px}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-identity>div{min-width:0;overflow-wrap:anywhere}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-identity h3{font:600 17px/1.35 var(--font-display);margin-block:4px}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-section{padding-block:8px;border-color:var(--line)}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-heading{margin:0;font:600 12px var(--font-ui)}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-heading button{width:100%;text-align:left;background:transparent;border-color:transparent;font:inherit;padding:6px 0}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-heading button:hover{background:var(--hover-surface)}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-section>div{padding-inline:0;gap:8px}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-section :is(input,textarea,select){min-width:0;max-width:100%;padding:7px;background:var(--input-background);border-color:var(--line);font-family:var(--font-ui)}
+:is(.write-studio .inspector,.editor-studio-inspector) .inspector-section label{line-height:1.5;color:var(--text)}
+:is(.write-studio .inspector,.editor-studio-inspector) .comment-card{border-radius:var(--radius-control);box-shadow:none;background:transparent;border-color:var(--line);padding:8px}
+:is(.write-studio .inspector,.editor-studio-inspector) :is(button,input,select,textarea):focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.editor-studio-inspector{background:var(--panel);border-radius:var(--radius-control)}
+.write-studio .app-status{gap:16px;background:var(--panel);font-variant-numeric:tabular-nums}
+.write-studio .app-status [data-save-state=Saved]{color:var(--muted)}
+.write-studio .status-count{background:transparent}
+@media(max-width:800px){.write-studio .workspace>aside:first-child{padding-inline:6px}.write-studio .tree-header{flex-wrap:wrap;gap:4px}.write-studio .app-status{gap:8px}}

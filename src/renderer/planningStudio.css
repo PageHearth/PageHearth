@@ -1,0 +1,143 @@
+/* Planning surfaces share Theme tokens, not manuscript or storage state.
+   Scope every rule so accepted Home, WRITE, World Bible and PUBLISH stay intact. */
+.planning-studio{min-width:0;max-width:100%;color:var(--text);background:var(--canvas);font-family:var(--font-ui);container:planning / inline-size}
+.planning-studio :is(button,input,select,textarea){font-family:var(--font-ui);max-width:100%;min-width:0}
+.planning-studio :is(button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.planning-studio :is(button,input,select,textarea){border-radius:var(--radius-small)}
+.planning-studio button{font-size:12px}
+.planning-studio button:disabled{cursor:default}
+.planning-studio .workspace-tools,.planning-studio .timeline-commandbar{gap:8px;padding:12px;background:var(--panel);border-color:var(--line);flex-shrink:0}
+.planning-studio .workspace-tools label{display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:11px}
+.planning-studio .workspace-tools label:has(input[type=checkbox]){flex:0 1 auto;flex-direction:row;align-items:center;align-self:center;color:var(--text);max-width:180px}
+.planning-studio .workspace-tools input[type=checkbox]{flex:none;width:auto;margin:0 4px 0 0}
+.planning-studio .workspace-tools :is(input,select){color:var(--text);background:var(--input-background)}
+.planning-studio :is(.mode-banner,.corkboard-section-label){background:var(--panel);color:var(--muted);letter-spacing:.1px;line-height:1.5;font-size:11px}
+.planning-studio .mode-banner{border-bottom:1px solid var(--line);border-inline-start:3px solid var(--accent);padding:8px 12px}
+.planning-studio :is(.empty-state,.timeline-empty){margin:16px;padding:20px;border:1px dashed var(--line);border-radius:var(--radius-control);color:var(--muted);font-size:13px;line-height:1.6;text-align:left}
+.planning-studio .planning-danger{color:var(--danger);background:transparent;border-color:var(--line)}
+/* Corkboard: a quiet board with color confined to the card edge. Stored x/y
+   and zoom remain authoritative; never reflow or rewrite saved positions. */
+.planning-studio .corkboard-context{font:600 17px/1.4 var(--font-display);color:var(--text)}
+.planning-studio .card-actions{flex-wrap:wrap;padding:8px 12px}
+.planning-studio .card-actions button{background:transparent;border-color:transparent;color:var(--muted)}
+.planning-studio .card-actions button:hover:not(:disabled){background:var(--hover-surface);color:var(--text)}
+.planning-studio .corkboard-section-label{flex-wrap:wrap;gap:4px 12px;padding:10px 12px}
+.planning-studio .corkboard-section-label strong{color:var(--text);letter-spacing:.4px;white-space:normal}
+.planning-studio .corkboard-layout{min-height:340px}
+.planning-studio .board-canvas{min-width:0;min-height:340px;background-image:none;background-color:var(--canvas)}
+.planning-studio .planning-card{--planning-edge:var(--line);background:var(--page);color:var(--text);border:1px solid var(--line);border-top:3px solid var(--planning-edge);border-radius:var(--radius-control);box-shadow:0 2px 4px var(--shadow);gap:5px}
+.planning-studio .planning-card.color-cyan{--planning-edge:var(--card-cyan-border)}
+.planning-studio .planning-card.color-yellow{--planning-edge:var(--card-yellow-border)}
+.planning-studio .planning-card.color-magenta{--planning-edge:var(--card-magenta-border)}
+.planning-studio .planning-card.color-custom.color-custom{--planning-edge:var(--custom-card-base);background:var(--page);border-color:var(--line);border-top-color:var(--custom-card-base)}
+.planning-studio .planning-card :is(small,.card-parent){color:var(--muted)}
+.planning-studio .planning-card :is(button,select,input){background:var(--input-background);color:var(--text);border-color:var(--line)}
+.planning-studio .planning-card textarea{color:var(--text);line-height:1.5}
+.planning-studio .planning-card.selected{outline:2px solid var(--accent);outline-offset:2px}
+.planning-studio .planning-card:focus-within{z-index:2}
+.planning-studio .card-topline{border-color:var(--line)}
+.planning-studio .card-drag-handle:disabled{opacity:.35;cursor:default}
+.planning-studio .density-compact .planning-card textarea{min-height:36px;height:44px}
+.planning-studio .density-compact .card-title{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.planning-studio .density-expanded .planning-card textarea{min-height:120px}
+.planning-studio .density-expanded .card-title{font-size:16px;line-height:1.4}
+.planning-studio .reference-shelf{padding:12px;background:var(--panel);width:220px;flex-basis:220px;min-width:0}
+.planning-studio .reference-shelf h3{font:600 15px var(--font-display);margin:0 0 12px}
+.planning-studio .reference-shelf button{border-color:transparent;background:transparent;padding:8px;text-align:left}
+.planning-studio .reference-shelf button:hover{background:var(--hover-surface)}
+.planning-studio .reference-shelf strong{overflow-wrap:anywhere;font-weight:500}
+.planning-studio .reference-shelf>input{width:100%;margin-bottom:10px}
+.planning-studio .manuscript-cards article{background:var(--page);border-radius:var(--radius-control);box-shadow:none}
+.planning-studio .manuscript-cards strong{font:600 15px/1.4 var(--font-display);overflow-wrap:anywhere}
+.planning-studio .manuscript-cards p{line-height:1.5;color:var(--muted)}
+.planning-studio .corkboard-peek{border-radius:var(--radius-control);background:var(--page)}
+/* Outliner owns horizontal overflow. Existing sticky Structure column and
+   pointer destination geometry remain intact. No fake resize affordance. */
+.planning-studio.outliner-workspace{display:flex;flex-direction:column;overflow:hidden}
+.planning-studio .outliner-grid{min-width:0;min-height:0;overflow:auto;flex:1;padding:0 12px 12px;display:block;scrollbar-gutter:stable}
+.planning-studio .outliner-grid>[role=row]{width:max(100%,var(--planning-grid-min,720px));min-width:max-content;border-color:var(--line);font-size:12px}
+.planning-studio .outliner-head{color:var(--muted);font-size:11px}
+.planning-studio .outliner-grid>[role=row]>span{padding:6px 8px}
+.planning-studio .outliner-grid :is(input,textarea){border-color:transparent;background:transparent;font-size:12px;padding:5px;width:100%}
+.planning-studio .outliner-grid textarea{height:34px;min-height:34px;line-height:1.4}
+.planning-studio .outliner-grid input[type=checkbox]{width:auto}
+.planning-studio .outliner-grid :is(input,textarea):hover{background:var(--input-background);border-color:var(--line)}
+.planning-studio .outliner-grid :is(input,textarea):focus{background:var(--input-background);border-color:var(--accent)}
+.planning-studio .outliner-grid [role=row]:hover{background:var(--hover-surface)}
+.planning-studio .outliner-grid [role=row].selected,.planning-studio .outliner-grid [role=row].selected>span:first-child{background:var(--active-surface);box-shadow:inset 3px 0 var(--accent)}
+.planning-studio .outliner-grid [data-group-selected=true] .structure-label{border-bottom:2px solid var(--accent)}
+.planning-studio .outliner-grid [data-kind=Part] .structure-label strong{font-weight:700;letter-spacing:.2px}
+.planning-studio .outliner-grid [data-kind=Scene] .structure-label strong{font-weight:500}
+.planning-studio .structure-label small{color:var(--muted);font-size:10px}
+.planning-studio .structure-label strong{max-width:38ch}
+.planning-studio .outliner-grid [role=gridcell]>button{background:transparent;border-color:transparent}
+.planning-studio .column-chooser{background:var(--panel);border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0;padding:9px 12px}
+.planning-studio .column-chooser summary{font-size:12px;cursor:pointer}
+/* Timeline keeps its explicit chronology and existing responsive details. */
+.planning-studio .timeline-event{border-radius:var(--radius-control);background:var(--page);border-color:var(--line);margin:6px 0}
+.planning-studio .timeline-event.selected{border-color:var(--accent);background:var(--active-surface)}
+.planning-studio .timeline-select{padding:10px 12px;gap:4px}
+.planning-studio .timeline-select:hover{background:var(--hover-surface)}
+.planning-studio .timeline-select strong{font:600 14px/1.4 var(--font-ui)}
+.planning-studio .timeline-chips small{padding:2px 5px;border:1px solid var(--line);border-radius:var(--radius-small)}
+.planning-studio .timeline-details{background:var(--panel);padding:14px}
+.planning-studio .timeline-details h2{font:600 18px var(--font-display)}
+.planning-studio .timeline-details h3{font-size:12px;color:var(--muted)}
+/* Notebook is a working notebook, not a manuscript page. Keep saved widths
+   in the wide layout; stack on actual container width, including detachment. */
+.planning-studio.notebook-workspace{container-type:normal;position:relative}
+.planning-studio .notebook-nav,.planning-studio .notebook-list{background:var(--panel);padding:12px;gap:6px}
+.planning-studio .notebook-nav h2{font:600 19px var(--font-display);margin:0 0 10px}
+.planning-studio .notebook-nav h3{font-size:11px;color:var(--muted);margin:14px 0 6px}
+.planning-studio .notebook-nav button{background:transparent}
+.planning-studio .notebook-nav button[aria-pressed=true],.planning-studio .folder-row.active{background:var(--active-surface);box-shadow:inset 3px 0 var(--accent)}
+.planning-studio .note-list-row{border-radius:var(--radius-small);border-bottom:1px solid var(--line);padding:6px 2px;gap:4px}
+.planning-studio .note-list-row strong{font-size:13px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.planning-studio .note-list-row small{font-size:11px;line-height:1.6;color:var(--muted)}
+.planning-studio .note-list-row.active{background:var(--active-surface);box-shadow:inset 3px 0 var(--accent)}
+.planning-studio .note-list-row:hover{background:var(--hover-surface)}
+.planning-studio .note-editor{background:var(--page);padding:20px clamp(12px,2vw,28px)}
+.planning-studio .note-title{font:600 23px/1.4 var(--font-display);width:100%;padding:6px 0}
+.planning-studio .note-toolbar{gap:4px;border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:12px}
+.planning-studio .note-toolbar button{background:transparent;border-color:transparent}
+.planning-studio .note-editor .tiptap{border:0;border-radius:0;padding:8px 0;max-width:75ch;line-height:1.65;overflow-wrap:anywhere}
+.planning-studio .note-editor details{border-top:1px solid var(--line);padding:12px 0}
+.planning-studio .note-editor summary{font-size:12px;color:var(--muted);cursor:pointer}
+.planning-studio .pane-resize{background:transparent;border-inline:1px solid var(--line)}
+.planning-studio .pane-resize:hover,.planning-studio .pane-resize:focus-visible{background:var(--active-surface)}
+/* Parent query is shared by docked and detached Notebook layouts. */
+:is(.author-workspace,.detached-shell):has(>.notebook-workspace){container:planning-notebook / inline-size}
+@container planning-notebook (max-width:760px){
+ .planning-studio.notebook-workspace{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);grid-template-rows:auto minmax(320px,1fr);overflow:auto!important}
+ .planning-studio .notebook-nav,.planning-studio .notebook-list{max-height:240px;min-height:160px;overflow:auto}
+ .planning-studio.notebook-workspace>.pane-resize{display:none}
+ .planning-studio .note-editor{grid-column:1/-1;overflow:visible;border-top:1px solid var(--line);min-width:0}
+}
+@container planning-notebook (max-width:360px){
+ .planning-studio.notebook-workspace{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(320px,1fr)}
+ .planning-studio .notebook-nav{max-height:180px}
+ .planning-studio .notebook-list{max-height:220px}
+}
+@container planning (max-width:600px){
+ .planning-studio .corkboard-layout{flex-direction:column;flex:none}
+ .planning-studio .board-canvas{flex:none;height:360px;min-height:0}
+ .planning-studio .reference-shelf{width:auto;flex:auto;border-left:0;border-top:1px solid var(--line);max-height:240px;overflow:auto}
+ .planning-studio .workspace-tools{gap:8px;padding:10px}
+ .planning-studio .workspace-tools label{flex:1 1 130px}
+ .planning-studio .workspace-tools select{width:100%;min-width:0}
+ .planning-studio .corkboard-context{flex-basis:100%;white-space:normal}
+}
+@container planning (max-width:400px){
+ /* A pinned 240px Structure cell would otherwise cover every other column. */
+ .planning-studio .outliner-grid>[role=row]>span:first-child{position:static}
+}
+
+/* Title length must never size an outline row or displace adjacent columns. */
+.planning-studio .outliner-grid>[role=row]{min-width:0}
+.planning-studio.outliner-workspace .structure-label{flex:1 1 0;min-width:0}
+.planning-studio.outliner-workspace .structure-label strong{display:block;max-width:none;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;overflow-wrap:normal}
+.outliner-title-tooltip{position:fixed;z-index:1000;box-sizing:border-box;max-width:min(520px,calc(100vw - 16px));padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--text);box-shadow:0 4px 18px #0003;font-size:13px;line-height:1.4;overflow-wrap:anywhere;max-height:calc(100vh - 16px);overflow:auto}
+
+/* Note filing uses the existing planning drag outline, distinct from folder order edges. */
+.planning-studio .note-list-row[data-dragging=true]{opacity:.65;outline:1px dashed var(--accent);outline-offset:-1px}
+.planning-studio .folder-row[data-drop=file]{background:var(--active-surface);outline:2px dashed var(--accent);outline-offset:-2px;box-shadow:inset 3px 0 var(--accent)}

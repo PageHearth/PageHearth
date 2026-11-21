@@ -1,0 +1,7 @@
+const callbacks:Record<string,Set<Function>>={};const w=window as any;const delayed:{ready:boolean;release:()=>void}[]=[];let holdNext=false;
+w.importFixture={emit:(command:any)=>callbacks.onCommand?.forEach(fn=>fn(command)),hold:()=>{holdNext=true;},delayed,release:(index:number)=>delayed[index].release()};
+w.pagehearth=new Proxy({}, {get:(_,key:string)=>{if(key.startsWith('on'))return (fn:Function)=>{(callbacks[key]??=new Set()).add(fn);return()=>callbacks[key].delete(fn);};return async(...args:any[])=>{if(key==='fontCatalog')return {families:['Arial','Georgia'],source:'fallback'};if(key==='theme')return args[0];if(key==='searchSnapshots')return [];if(key==='searchRoute')return false;if(['manuscriptImport','templates','appState','save','protectDocument','close','choose','writingContribution','writingRead'].includes(key)){
+let gate:Promise<void>|undefined,entry:any;if(key==='manuscriptImport'&&args[0].kind==='preview'&&holdNext){holdNext=false;gate=new Promise(resolve=>{entry={ready:false,release:resolve};delayed.push(entry);});}
+// Preserve undefined object members, as Electron structured clone does.
+const response=await fetch('/import-api',{method:'POST',body:JSON.stringify({key,args},(_key,value)=>value===undefined?{__fixtureUndefined:true}:value)}),result=await response.json();if(entry)entry.ready=true;if(gate)await gate;if(result.error)throw Error(result.error);return result.value;}};}});
+await import('../../src/renderer/main');

@@ -1,0 +1,94 @@
+/* Application semantic tokens. Presets/validated custom values are supplied by themeRuntime.
+   Content colors (Revision passes, POV, custom cards) retain their canonical ownership. */
+:root{color:var(--text,#292c32);background:var(--app-background,#eceef0)}
+body{color:var(--text);background:var(--app-background)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+button:hover:not(:disabled){border-color:var(--focus)}
+button:disabled{opacity:1;color:var(--muted);cursor:default}
+button.primary{color:var(--primary-text);background:var(--accent)}
+button.primary:hover:not(:disabled){background:var(--accent-hover)}
+button.primary:disabled{color:var(--muted);background:var(--panel);border-color:var(--line)}
+input,select,textarea{background:var(--input-background);color:var(--text);border-color:var(--border)}
+a{color:var(--link)}
+::selection{background:var(--selection);color:var(--selection-text)}
+*{scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track);scrollbar-width:auto}
+aside,.notebook-nav,.collections-nav{background:var(--sidebar-background)}
+.app>header,footer{background:var(--panel)}
+.page,.note-editor .tiptap,.entity-rich-text .tiptap{color:var(--editor-text)}
+.tiptap{caret-color:var(--editor-text)}
+.tiptap a{color:var(--link)}
+.tree-row.selected{background:var(--selection);color:var(--selection-text)}
+.outliner tbody tr:hover,.note-list-row:hover{background:var(--hover-surface)}
+.shell-dialog,.modal-card,.shortcut-dialog,.global-search,.history-browser,.templates-dialog,.command-palette,.revision-manager{background:var(--elevated);color:var(--text)}
+dialog::backdrop,.modal-backdrop,.quicknotes-backdrop{background:var(--modal-backdrop)}
+/* PUBLISH/output remains a distinct presentation, never a source of Theme data. */
+.publication .page{--page:#fffdf8;--editor-text:#292c32;background:var(--page);color:var(--editor-text)}
+.theme-safe{color-scheme:light;color:var(--text);background:var(--panel);padding:12px;border:1px solid var(--border);border-radius:8px}
+.theme-settings{min-width:0;margin-block:12px}
+.theme-settings h3{margin-top:0}.theme-settings p{font-size:12px;line-height:1.5}
+.theme-settings label{display:block;font-size:12px;margin-block:8px}.theme-settings select{max-width:100%}
+.theme-actions{display:flex;gap:6px;flex-wrap:wrap;margin-block:12px}
+.theme-actions button{white-space:normal;font-size:12px;max-width:100%}
+.theme-editor h4{margin:10px 0}.theme-editor summary{cursor:pointer;padding:8px 0;font-weight:600}
+.theme-color{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(90px,130px);gap:8px;align-items:center;padding:4px 0}
+.theme-color input{min-width:0;width:100%;padding:6px}.theme-color input[type=color]{height:34px;padding:2px}
+.theme-color [aria-invalid=true]{border:2px solid var(--danger)}
+.theme-token-group{border-top:1px solid var(--line)}
+.theme-preview{color:var(--text);background:var(--app-background);border:1px solid var(--border);padding:12px;margin-block:12px;overflow-wrap:anywhere}
+.theme-preview-editor{background:var(--page);color:var(--editor-text);padding:12px;margin-block:8px}
+.theme-preview-spelling{text-decoration:underline wavy var(--spelling-underline)}
+.theme-preview-selected{background:var(--selection);color:var(--selection-text)}
+.theme-preview-focus{display:inline-block;outline:2px solid var(--focus);margin:8px;padding:4px}
+.theme-preview-warning{color:var(--warning)}
+.theme-contrast{border:1px solid var(--border);padding:8px}.theme-contrast ul{padding-left:20px;font-size:12px}
+.shell-dialog:has(.theme-editor){width:min(720px,calc(100vw - 24px))}
+@media(max-width:450px){.theme-color{grid-template-columns:minmax(0,1fr) 34px minmax(80px,100px);gap:4px}}
+/* Shared secondary/active roles, including custom theme values. */
+.document-bar,.preview-note{color:var(--text-secondary)}
+.toolbar button[aria-pressed=true],.outliner tr[aria-selected=true]{background:var(--active-surface);color:var(--text)}
+:root :is(button,input,select,textarea,[tabindex],summary):focus-visible{outline-color:var(--focus)}
+.manual-save-ack{color:var(--success)}
+/* Colored cards retain their semantic palette; neutral cards and controls follow Theme. */
+.planning-card{--card-control-bg:var(--input-background);--card-control-border:var(--border)}
+.planning-card.color-neutral{background:var(--elevated);color:var(--text);border-color:var(--border);--card-muted:var(--text-secondary)}
+.planning-card :is(button,select,input,textarea){color:var(--text)}
+.command-palette [role=option][aria-selected=true]{background:var(--active-surface);border-color:var(--focus);color:var(--text)}
+.notice,.tree-rename.selected,.outliner-grid>[role=row].selected,.note-list-row.active,.font-popup .font-active,.outliner-sort:hover{color:var(--selection-text)}
+.note-list-row.active small,.outliner-grid>[role=row].selected small{color:inherit}
+
+/* Project-local World Bible token boundary; no application/root mutation. */
+.world-theme-scope{display:flex;flex:1;flex-direction:column;min-width:0;min-height:0;width:100%;overflow:hidden;color:var(--text);background:var(--app-background)}
+.world-appearance-settings{margin-block:10px;padding:10px;border:1px solid var(--line);border-radius:8px}
+.world-appearance-settings>label{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:10px;margin-block:8px}
+.world-appearance-settings select{min-width:0;width:100%}
+@media(max-width:650px){.world-appearance-settings>label{grid-template-columns:minmax(0,1fr)}}
+
+/* Quiet command actions retain selectors/overflow containers and semantic state. */
+.editor-command-bar button[class^="format-"],.editor-command-bar .editor-inspector-toggle{border:1px solid transparent;background:transparent;box-shadow:none;min-width:30px;min-height:30px;align-items:center;justify-content:center}
+.editor-command-bar button[class^="format-"]:hover:not(:disabled),.editor-command-bar .editor-inspector-toggle:hover{background:var(--hover-surface)}
+.editor-command-bar button[aria-pressed=true],.editor-command-bar button[aria-pressed=mixed]{background:var(--active-surface);border-color:var(--border)}
+.editor-command-bar button[class^="format-"]:disabled{color:var(--muted);cursor:default}
+.tree-row.multi-selected{box-shadow:inset 3px 0 var(--accent);background:var(--active-surface);color:var(--text)}
+.tree-help-dialog{width:min(440px,calc(100vw - 32px));max-height:80vh;overflow:auto;white-space:normal}
+.tree-help-dialog p{line-height:1.5}
+.inspector-section>.inspector-heading{margin:0;font-family:inherit;font-size:12px;font-weight:600}
+.inspector-heading>button{width:100%;text-align:left;border:0;border-radius:0;background:transparent;padding:8px 6px;font:inherit;display:flex;align-items:center;gap:6px;min-height:32px}
+.inspector-heading>button:hover{background:var(--hover-surface)}
+.inspector-section{margin:0;padding-top:0;border-top:1px solid var(--line)}
+.comment-filters{display:grid!important;grid-template-columns:minmax(0,1fr);gap:8px}
+.comment-filters select{width:100%;min-width:0}
+.project-settings{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;overflow-wrap:anywhere}
+.project-settings>label{display:flex;align-items:start;gap:8px}
+.project-settings button{margin:4px;white-space:normal}
+
+/* Compact Story Tree actions and rows; shared semantic theme roles. */
+.tree-header{display:flex;align-items:center;gap:4px;margin-bottom:6px;min-width:0}.tree-header .panel-title{margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;letter-spacing:1px;white-space:nowrap}.tree-header .tree-actions{flex-wrap:nowrap;gap:0}.tree-actions>button,.tree-add>button{width:28px;height:28px;min-width:28px;padding:3px;border:0;background:transparent;display:grid;place-items:center;font-size:15px}.tree-actions>button:hover,.tree-add>button:hover{background:var(--hover-surface)}.tree-actions>button[aria-pressed=true],.tree-add>button[aria-expanded=true]{background:var(--active-surface)}.tree-add{position:relative}.tree-add>[role=menu]{position:absolute;right:0;top:100%;z-index:40;min-width:150px;background:var(--elevated);border:1px solid var(--border);padding:4px;box-shadow:0 3px 10px var(--shadow)}.tree-add [role=menuitem]{display:block;text-align:left;width:100%;border:0;background:transparent;padding:6px}.tree-add [role=menuitem]:hover{background:var(--hover-surface)}.tree-entry .tree-row{min-height:28px;padding:4px 6px;margin:0;line-height:20px}.tree-entry .tree-disclosure{height:28px}.tree-header button:focus-visible{outline-offset:-2px}
+
+/* Emphasize the section title while retaining comfortable icon hit targets. */
+.tree-header .panel-title{font-size:12px;letter-spacing:.4px}
+.tree-header .tree-actions>button,.tree-header .tree-add>button{width:26px;min-width:26px;font-size:13px}
+.tree-header .tree-actions>button svg{width:16px;height:16px}
+
+.tree{container-type:inline-size}
+@container (max-width:155px){.tree-header{flex-wrap:wrap;row-gap:2px}.tree-header .panel-title{flex-basis:100%}.tree-header .tree-actions{margin-left:0}}
+.window-title-setting{border:1px solid var(--line);border-radius:6px;margin-block:12px;padding:12px;min-width:0}.window-title-setting legend{font-weight:600}.window-title-setting select{display:block;width:100%;margin-top:6px}.window-title-setting .window-title-color{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.window-title-setting input[type=color]{width:44px;height:32px;padding:2px}.window-title-setting output{font:12px monospace}

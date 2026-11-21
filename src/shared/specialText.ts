@@ -1,0 +1,10 @@
+import {validFontFamily} from './fonts.js';
+export const specialTextRoles={'written-note':'Written Note',letter:'Letter',journal:'Journal Entry',poem:'Poem',excerpt:'Excerpt',document:'Document / In-world Text',custom:'Custom Special Text'} as const;
+export type SpecialTextRole=keyof typeof specialTextRoles;
+export const validSpecialText=(v:unknown):v is SpecialTextRole=>typeof v==='string'&&Object.hasOwn(specialTextRoles,v);
+export type SpecialTextStyle={font?:string;sizePt?:number;lineHeight?:number;leftPt?:number;rightPt?:number;indentPt?:number;spacePt?:number;alignment?:'left'|'center'|'right'|'justify';italic?:boolean};
+export type SpecialTextStyles=Partial<Record<SpecialTextRole,SpecialTextStyle>>;
+export function validateSpecialTextStyles(styles:SpecialTextStyles){if(!styles||typeof styles!=='object'||Array.isArray(styles))throw Error('Invalid Special Text styles.');for(const [role,s] of Object.entries(styles)){if(!validSpecialText(role)||!s||typeof s!=='object'||Object.keys(s).some(k=>!['font','sizePt','lineHeight','leftPt','rightPt','indentPt','spacePt','alignment','italic'].includes(k)))throw Error('Invalid Special Text style.');if(s.font!==undefined&&!validFontFamily(s.font)||s.alignment!==undefined&&!['left','center','right','justify'].includes(s.alignment)||s.italic!==undefined&&typeof s.italic!=='boolean')throw Error('Invalid Special Text treatment.');for(const [k,min,max] of [['sizePt',6,36],['lineHeight',1,2.5],['leftPt',0,72],['rightPt',0,72],['indentPt',0,72],['spacePt',0,72]] as const){const n=s[k];if(n!==undefined&&(!Number.isFinite(n)||n<min||n>max))throw Error('Invalid Special Text dimensions.');}}}
+export function specialTextStyle(role:SpecialTextRole,styles:SpecialTextStyles|undefined,body:{font:string;sizePt:number;lineHeight:number}){return {font:body.font,sizePt:body.sizePt,lineHeight:body.lineHeight,leftPt:18,rightPt:18,indentPt:0,spacePt:8,alignment:'left' as const,italic:role==='journal'||role==='written-note',...styles?.[role]};}
+
+export const validSpecialRegionId=(v:unknown):v is string=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v);

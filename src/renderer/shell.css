@@ -1,0 +1,137 @@
+.shell-navigation{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;flex:0 0 44px;height:44px;padding:3px 10px;background:var(--panel);border-bottom:1px solid var(--line);min-width:0}
+.shell-home{padding:3px 5px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;flex:none}
+.shell-home img{display:block;height:30px;width:auto;object-fit:contain}
+.shell-workspaces{min-width:0;container-type:inline-size}
+.shell-navigation nav{margin:0;padding:2px;background:transparent;border-radius:5px;flex-wrap:nowrap;white-space:nowrap}
+.shell-navigation nav button{padding:7px 9px;font-size:12px;letter-spacing:0;white-space:nowrap}
+.shell-navigation [aria-current=page],.shell-modes [aria-pressed=true]{background:var(--selection);color:var(--selection-text)}
+.shell-modes{justify-content:flex-end}
+.workspace-links{justify-content:center}
+.workspace-overflow{display:none;min-width:0}
+.workspace-overflow select{width:100%;min-width:0;max-width:220px;padding:6px;font-size:12px}
+@container(max-width:710px){.workspace-links{display:none}.workspace-overflow{display:block}}
+.app-status{flex:0 0 36px;height:36px;min-width:0;gap:12px;white-space:nowrap;padding:0 12px;overflow:hidden}
+.app-status>span:first-child{flex:none}
+.status-utilities{margin-left:auto;display:flex;align-items:center;gap:8px;min-width:0;flex:none}
+.status-utilities button{padding:3px 5px;font-size:11px;background:transparent;border-color:transparent;white-space:nowrap}
+.status-utilities kbd{font:inherit}
+.status-zoom{display:flex;gap:3px;align-items:center;flex:none}
+.status-zoom select{padding:3px;font-size:11px;max-width:78px}
+@media(max-width:900px){.status-context,.status-hint{display:none}}
+@media(max-width:620px){.status-count{display:none}.app-status{gap:5px;padding:0 5px}.status-utilities{gap:3px}.shell-navigation{gap:4px;padding-inline:4px}.shell-home img{height:25px}.shell-navigation nav button{padding-inline:6px}}
+.shortcut-dialog{width:min(740px,calc(100vw - 20px));max-height:calc(100vh - 20px);background:var(--panel);color:inherit;border:1px solid var(--line);border-radius:10px;overflow:auto;padding:20px}
+.shortcut-dialog::backdrop{background:var(--modal-backdrop)}.shortcut-dialog h2{margin:0}.shortcut-list{margin:12px 0;display:grid;gap:8px}.shortcut-list section{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:8px 0}.shortcut-list section>div:first-child{display:grid;margin-right:auto}.shortcut-list button{font-size:12px;padding:5px 7px}.shortcut-list kbd{font-size:12px}.shortcut-edit{flex:1 0 100%;display:flex;align-items:end;flex-wrap:wrap;gap:8px}.shortcut-edit label{flex:1;min-width:150px}
+.workspace>.inspector,.detached-inspector{scrollbar-gutter:stable;overflow-y:auto;overflow-x:hidden;min-width:0;min-height:0;padding:14px 12px 14px 16px}
+.workspace>.inspector>*{flex-shrink:0;min-width:0;max-width:100%}
+.context-inspector{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.context-inspector .inspector-identity{height:auto;min-height:0;display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;padding:0 0 8px;background:transparent}
+.inspector-identity>div{flex:1 1 100px;min-width:0}.inspector-identity>button{flex:0 0 auto}.inspector-identity h3{overflow-wrap:anywhere}
+.inspector .panel-title{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;letter-spacing:1px}
+.context-inspector :is(input,select,textarea),.inspector button{min-width:0;max-width:100%}.context-inspector :is(input,select,textarea){width:100%}.context-inspector button,.inspector>button{white-space:normal;overflow-wrap:anywhere}
+.inspector-section,.inspector-section>div,.inspector-section label,.custom-field-row,.project-field-entry{min-width:0;max-width:100%}.custom-field-actions{flex-wrap:wrap}.project-field-entry{display:flex;flex-wrap:wrap}.project-field-entry>div{min-width:0}.detached-inspector{flex:1;width:min(420px,100%);margin:12px auto}
+
+/* The separator belongs to the fixed track; only its sibling content scrolls. */
+.workspace>.inspector{overflow:hidden;padding:0;gap:0;scrollbar-gutter:auto;min-height:0}
+.workspace>.inspector>.inspector-scroll{flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;padding:14px 12px 14px 16px;display:flex;flex-direction:column;gap:12px}
+.inspector-scroll>*{flex-shrink:0;min-width:0;max-width:100%}
+.shortcut-dialog{padding:0;overflow:hidden}
+.shortcut-dialog[open]{display:flex;flex-direction:column}
+.shortcut-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;padding:14px 20px;border-bottom:1px solid var(--line)}
+.shortcut-heading button{flex:none;font-size:22px;line-height:1;padding:6px 10px}
+.shortcut-body{overflow:auto;min-height:0;padding:0 20px 20px}
+
+.editor-command-frame{container-type:inline-size;flex:none;min-width:0}
+.editor-command-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;height:42px;padding:4px 10px;min-width:0;white-space:nowrap;background:var(--canvas);border-bottom:1px solid var(--line)}
+.editor-formatting,.editor-utilities{display:flex;align-items:center;gap:4px;min-width:0;flex-wrap:nowrap}
+.editor-command-bar button,.editor-command-bar select{min-height:30px;padding:4px 7px;font-size:12px;flex-shrink:0}
+.editor-utilities{margin-left:auto}.editor-utilities label{display:flex;align-items:center;gap:4px;font-size:12px}
+.editor-command-bar:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@container(max-width:720px){.editor-command-bar .format-list{display:none}.editor-utilities label>span{display:none}}
+@container(max-width:600px){.editor-command-bar .format-heading,.editor-command-bar .format-undo,.editor-command-bar .format-redo{display:none}}
+@container(max-width:400px){.editor-inspector-toggle{display:none}.editor-command-bar{padding-inline:3px;gap:3px}.editor-formatting{gap:1px}.editor-command-bar select{max-width:100px}}
+.draft-scroll .page{margin-top:12px;position:relative}
+.draft-scroll .tiptap:focus-visible,.draft-scroll .tiptap:focus{outline:1px dotted color-mix(in srgb,var(--accent) 65%,var(--muted));outline-offset:6px;box-shadow:none}
+.draft-page-view .page{min-height:var(--draft-page-min-height,680px);padding-bottom:40px}
+.draft-page-break{display:block;height:54px;pointer-events:none;user-select:none;text-indent:0;line-height:0}
+.draft-page-gap{position:absolute;left:0;right:0;background:var(--canvas);border-top:1px solid var(--line);border-bottom:1px solid var(--line);pointer-events:none;user-select:none;z-index:1}
+
+@container(max-width:300px){.editor-command-bar .format-italic,.editor-command-bar .format-underline{display:none}}
+@container(max-width:230px){.editor-command-bar .format-bold{display:none}.editor-command-bar select{max-width:90px}}
+
+.editor-command-bar .smart-font-trigger{display:flex;align-items:center;min-width:65px;width:140px;max-width:140px;gap:4px;justify-content:space-between}.smart-font-trigger>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.font-popup{position:fixed;z-index:1000;width:min(320px,calc(100vw - 16px));height:min(420px,calc(100vh - 16px));display:flex;flex-direction:column;gap:8px;padding:12px;background:var(--panel);color:inherit;border:1px solid var(--line);border-radius:8px;box-shadow:0 5px 20px var(--shadow);white-space:normal}
+.font-popup label{display:grid;gap:5px;font-size:12px}.font-popup input{min-width:0;width:100%;padding:7px}.font-popup [role=listbox]{overflow:auto;min-height:0;flex:1}.font-popup [role=option]{display:block;text-align:left;width:100%;min-height:30px;padding:5px 8px;font-size:13px;overflow-wrap:anywhere;border:1px solid transparent;border-radius:3px}.font-popup .font-active{outline:1px solid var(--accent);outline-offset:-1px;background:var(--selection)}.font-popup [aria-selected=true]{font-weight:700}.font-popup small{font-size:11px}
+@container(max-width:850px){.editor-command-bar .format-list{display:none}.editor-utilities label>span{display:none}}
+@container(max-width:750px){.editor-command-bar .format-heading{display:none}}
+@container(max-width:650px){.editor-command-bar .format-undo,.editor-command-bar .format-redo{display:none}.editor-command-bar .smart-font-trigger{width:110px}}
+@container(max-width:500px){.editor-command-bar .format-bold,.editor-command-bar .format-italic,.editor-command-bar .format-underline{display:none}.editor-command-bar .smart-font-trigger{width:90px}}
+@container(max-width:350px){.editor-command-bar .smart-font-trigger{display:none}}
+
+.font-popup [role=grid]{overflow:auto;min-height:0;flex:1}.font-row{display:flex;align-items:center;min-height:36px;content-visibility:auto;contain-intrinsic-size:auto 36px}.font-row>[role=gridcell]:first-child{width:28px;flex:none}.font-choice-cell{flex:1;min-width:0}.font-popup .font-favorite{width:28px;min-height:32px;padding:2px;border:0;background:transparent}.font-popup .font-choice{width:100%;min-height:36px;display:flex;align-items:center;gap:8px;text-align:left;padding:4px;border:0;background:transparent}.font-family-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:13px system-ui,sans-serif}.font-preview{flex:none;max-width:100px;overflow:hidden;white-space:nowrap;font-size:18px;line-height:24px}.font-section{font:600 11px system-ui,sans-serif;color:var(--muted);padding:5px 4px}.font-popup .font-favorite:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+
+.editor-command-bar .editor-layout-toggle{display:inline-flex;align-items:center;justify-content:center;width:30px;padding:4px;flex:none}
+@container(max-width:500px){.editor-inspector-toggle{display:none}}
+@container(max-width:260px){.editor-command-bar .editor-layout-toggle{display:none}}
+
+.editor-command-bar select[aria-label="More editor commands"]{width:76px;max-width:100px}
+
+/* Typography stays in the shared single command row; overflow uses the same commands. */
+.font-size-trigger{width:64px;flex:none}.format-alignment{display:inline-flex;align-items:center;justify-content:center;width:30px;flex:none}
+.size-popup{position:fixed;z-index:1000;width:min(252px,calc(100vw - 16px));max-height:calc(100vh - 16px);overflow:auto;display:flex;flex-direction:column;gap:8px;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 5px 20px var(--shadow)}
+.size-popup form{display:flex;gap:8px;align-items:end}.size-popup label{min-width:0}.size-popup input{width:100%;min-width:0}.size-presets{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+@container(max-width:980px){.editor-command-bar .format-list,.editor-command-bar .format-heading{display:none}}
+@container(max-width:850px){.editor-command-bar .format-undo,.editor-command-bar .format-redo{display:none}}
+@container(max-width:650px){.editor-command-bar .format-bold,.editor-command-bar .format-italic,.editor-command-bar .format-underline{display:none}}
+@container(max-width:500px){.editor-command-bar .smart-font-trigger{display:none}}
+@container(max-width:400px){.editor-command-bar .font-size-trigger,.editor-command-bar .format-alignment{display:none}}
+
+/* Read-only formatting feedback. Inset solid/dashed rails distinguish active/mixed without geometry changes. */
+.editor-formatting button[aria-pressed]{position:relative}
+.editor-formatting button[aria-pressed="true"],.editor-formatting button[aria-pressed="mixed"]{background:var(--selection);color:var(--selection-text);border-color:currentColor}
+.editor-formatting button[aria-pressed="true"]::after,.editor-formatting button[aria-pressed="mixed"]::after{content:"";position:absolute;left:4px;right:4px;bottom:2px;border-bottom:3px solid currentColor;pointer-events:none}
+.editor-formatting button[aria-pressed="mixed"]::after{border-bottom-style:dashed}
+.editor-formatting button[aria-pressed]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.editor-formatting button[aria-pressed]:disabled{opacity:.45;cursor:not-allowed}
+
+/* Equal side tracks keep the workspace axis independent of control/name widths. */
+.shell-navigation{grid-template-columns:minmax(0,1fr) clamp(100px,calc(100% - 700px),800px) minmax(0,1fr)}
+.shell-left,.shell-right{display:flex;align-items:center;gap:6px;min-width:0}
+.shell-right{justify-content:flex-end}
+.shell-left .revision-control{flex:1 1 220px;max-width:220px}
+.shell-workspaces{text-align:center}
+.shell-home img{max-width:110px;height:auto;max-height:30px}
+@media(max-width:620px){.shell-left,.shell-right{gap:2px}.shell-home{padding:0;flex:0 1 48px;min-width:24px}.shell-home img{width:100%;height:auto}.shell-left .revision-control{flex:1 1 130px}.shell-navigation nav button{padding-inline:4px}.workspace-overflow select{font-size:11px;padding-inline:2px}}
+
+/* Actual measured fit owns visibility; legacy breakpoints no longer hide commands. */
+.measured-toolbar [data-editor-command]{display:flex!important;flex:none;align-items:center}
+.measured-toolbar [data-overflowed]{display:none!important}
+.measured-toolbar .smart-font-trigger{display:flex!important}
+.measured-toolbar .editor-utilities{margin-left:auto}
+.measured-toolbar .editor-overflow-trigger{flex:none;width:28px;padding:2px;border:0;background:transparent;font-size:20px}
+.measured-toolbar .editor-overflow-trigger:hover{background:var(--hover-surface)}
+.editor-overflow-menu{position:fixed;z-index:3000;width:220px;max-height:calc(100vh - 60px);overflow:auto;padding:4px;background:var(--elevated);border:1px solid var(--border);border-radius:6px;box-shadow:0 4px 12px var(--shadow)}
+.editor-overflow-menu button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:7px;font-size:12px}
+.editor-overflow-menu button:hover{background:var(--hover-surface)}
+
+.measured-toolbar .font-size-trigger{display:inline-flex!important}
+
+.measured-toolbar .editor-tree-toggle{width:30px;padding:4px;border-color:transparent;background:transparent}
+.measured-toolbar .editor-tree-toggle:hover{background:var(--hover-surface)}
+/* Approved vector emblem; the adaptive word label remains real theme-aware text. */
+.shell-home{gap:7px;min-width:0;color:var(--text)}
+.shell-home .shell-emblem{position:relative;display:block;width:35px;height:30px;overflow:hidden;flex:0 0 35px}
+.shell-home .shell-emblem img{display:block;width:100%;height:100%;object-fit:contain}
+.shell-brand-name{font:20px/1.2 Georgia,'Times New Roman',serif;color:var(--text);white-space:nowrap}
+@media(max-width:620px){.shell-home{flex:0 1 auto;padding:2px;gap:4px}.shell-brand-name{font-size:17px}.shell-home .shell-emblem{width:29px;height:25px;flex-basis:29px}}
+@media(max-width:420px){.shell-navigation:has(.shell-home[aria-current=page]){grid-template-columns:1fr auto;gap:4px}.shell-navigation:has(.shell-home[aria-current=page]) .shell-workspaces{display:none}}
+
+.shell-theme{display:inline-flex;align-items:center;justify-content:center;width:32px;min-width:32px;height:32px;padding:5px;background:transparent;border:1px solid transparent}
+.shell-theme:hover{background:var(--hover-surface)}
+.shell-theme:focus-visible,.quick-theme-menu button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.quick-theme-menu{position:fixed;z-index:3000;width:min(260px,calc(100vw - 16px));max-height:calc(100vh - 64px);overflow:auto;padding:6px;background:var(--elevated);color:var(--text);border:1px solid var(--border);border-radius:6px;box-shadow:0 4px 14px var(--shadow)}
+.quick-theme-menu button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;overflow-wrap:anywhere;border:0;background:transparent;color:var(--text);padding:8px;font-size:13px}
+.quick-theme-menu button:hover{background:var(--hover-surface)}
+.quick-theme-menu button span{flex:0 0 16px}
+.quick-theme-group{font-size:12px;color:var(--text-secondary);padding:8px 8px 3px;border-top:1px solid var(--line);margin-top:4px}
+.quick-theme-menu hr{border:0;border-top:1px solid var(--line)}
+@media(max-width:700px){.shell-navigation{grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:auto;min-height:44px}.shell-workspaces{grid-row:2;grid-column:1/-1}.shell-workspaces:empty{display:none}.shell-right{grid-column:2;grid-row:1}.shell-left .revision-control{min-width:0}.shell-navigation:has(.revision-control) .shell-brand-name{display:none}}

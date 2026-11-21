@@ -1,0 +1,7 @@
+import {it,expect} from 'vitest';import {promises as fs} from 'node:fs';import path from 'node:path';import os from 'node:os';
+import {Store} from '../src/main/storage.js';import {createManuscriptImage} from '../src/shared/manuscriptImages.js';import {prepareManuscriptImage,writeManuscriptImage} from '../src/main/manuscriptImageAssets.js';
+it('recovers a protected image body with durable bytes, preserves Activity, and verifies its backup',async()=>{
+ const root=await fs.mkdtemp(path.join(os.tmpdir(),'pagehearth-image-storage-'));let store=new Store(root);
+ try{await store.create('Image recovery');const id=store.project.manifest.nodes[0].id,bytes=await fs.readFile('assets/branding/pagehearth/PageHearth_App_Icon.png'),asset=await writeManuscriptImage(root,prepareManuscriptImage(bytes)),body=structuredClone(store.project.documents[id]);body.content!.push(createManuscriptImage(store.project.manifest.id,asset.asset,asset.width,asset.height));const activity=await store.writing.read();await store.stageDocument(id,body);await store.release();store=new Store(root);await store.open(async()=>true);expect(store.project.documents[id]).toEqual(body);expect(await fs.readFile(path.join(root,asset.asset))).toEqual(bytes);expect(await store.writing.read()).toEqual(activity);const archive=await store.backup();expect(await Store.verifyBackup(archive)).toBe(true);
+ }finally{await store.release();await fs.rm(root,{recursive:true,force:true});}
+});

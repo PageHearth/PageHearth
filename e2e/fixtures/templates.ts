@@ -1,0 +1,4 @@
+const callbacks:Record<string,Set<Function>>={};const w=window as any;
+w.templateFixture={emit:(command:any)=>callbacks.onCommand?.forEach(fn=>fn(command))};
+w.pagehearth=new Proxy({}, {get:(_,key:string)=>{if(key.startsWith('on'))return (fn:Function)=>{(callbacks[key]??=new Set()).add(fn);return()=>callbacks[key].delete(fn);};return async(...args:any[])=>{if(key==='fontCatalog')return {families:['Arial','Georgia'],source:'fallback'};if(key==='theme')return args[0];if(key==='searchSnapshots')return [];if(key==='searchRoute')return false;if(['templates','appState','save','protectDocument','close','choose'].includes(key)){const response=await fetch('/templates-api',{method:'POST',body:JSON.stringify({key,args})}),result=await response.json();if(result.error)throw Error(result.error);return result.value;}};}});
+await import('../../src/renderer/main');

@@ -1,0 +1,8 @@
+import type {Project} from '../shared/model';
+import {editVariant,type PublicationVariant} from '../shared/publicationVariants';
+import {specialTextRoles,specialTextStyle} from '../shared/specialText';
+import {PrintStyleFields} from './PrintStyleFields';
+export function VariantPrintTreatment({project,variant,fonts,onChange}:{project:Project;variant:PublicationVariant;fonts:{family:string;available:boolean}[];onChange:(p:Project)=>void}){
+ const plan=project.author.publication!,v=variant,role=specialTextRoles[v.role],style=v.treatments.print,base=specialTextStyle(v.role,plan.style.specialText,plan.style.print);
+ return <section aria-label={`${v.name} Print treatment`}><p><strong>Print: {style&&Object.keys(style).length?'Custom treatment':'Following '+role+' Print Default'} — {style?.font||base.font}</strong></p><p>eBook font choices do not automatically change Print. This controls shared “{v.name}”, not just this passage.</p><button disabled={!v.treatments.ebook.family} onClick={()=>onChange(editVariant(project,v.id,{print:{...style,font:v.treatments.ebook.family}}))}>Use eBook font for Print</button><details><summary>Print treatment</summary><label>Print treatment<select aria-label="Print treatment" value={style?'custom':'default'} onChange={e=>onChange(editVariant(project,v.id,{print:e.target.value==='custom'?{}:null}))}><option value="default">Follow {role} Print Default</option><option value="custom">Custom Print treatment</option></select></label>{style&&<PrintStyleFields plan={plan} role={v.role} style={style} fonts={fonts} onChange={print=>onChange(editVariant(project,v.id,{print}))}/>}<p>Uses Print embedding checks. Reader overrides and eBook passage overrides do not apply.</p></details></section>;
+}

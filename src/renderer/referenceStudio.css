@@ -1,0 +1,117 @@
+/* Research and Collections share Phase 4 tokens, not data or navigation systems. */
+.reference-studio{font-family:var(--font-ui);color:var(--text);background:var(--canvas);min-width:0;container:reference-studio / inline-size}
+.reference-studio :is(button,input,select,textarea){font-family:var(--font-ui);min-width:0;max-width:100%;border-radius:var(--radius-small);font-size:12px}
+.reference-studio :is(button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.reference-studio button:disabled{cursor:default}
+.reference-studio :is(h1,h2,h3,p){overflow-wrap:anywhere}
+.reference-studio button:not(.primary):not(.danger){background:transparent}
+.reference-studio button:not(:disabled):hover{background:var(--hover-surface);color:var(--text)}
+.reference-studio :is(input,select,textarea){background:var(--input-background);color:var(--text);border-color:var(--line)}
+.reference-studio .reference-type-icon{width:21px;height:21px;flex:none;align-self:center;color:var(--muted)}
+.reference-studio :is(.reference-context,.eyebrow){font:11px/1.5 var(--font-ui);color:var(--muted);margin:4px 0}
+.reference-studio :is(.empty-state,.collection-empty){padding:24px;border:1px dashed var(--line);border-radius:var(--radius-control);color:var(--muted);font-size:13px;line-height:1.6;max-width:520px;margin:20px auto;text-align:left}
+.reference-studio :is(.empty-state,.collection-empty) :is(h2,h3){font:600 19px/1.4 var(--font-display);color:var(--text);margin:0 0 8px}
+/* The reference shelf: fixed-height working panes, with one scroll surface per pane. */
+.reference-studio.research-workspace{display:flex;flex-direction:column;overflow:hidden}
+.reference-studio .research-header{height:auto;min-height:0;flex:none;align-items:center;gap:12px;padding:16px 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+.reference-studio .research-header h1{font:600 25px/1.3 var(--font-display)}
+.reference-studio .research-header p:last-child{font-size:12px;line-height:1.5;color:var(--muted)}
+.reference-studio .research-actions{flex:none;background:var(--panel);padding:10px 20px;gap:8px}
+.reference-studio .research-panes{flex:1;min-height:0;overflow:hidden}
+.reference-studio .research-organizer{background:var(--panel);padding:12px}
+.reference-studio .research-organizer>button{padding:7px 8px;border-color:transparent;font-size:12px}
+.reference-studio .research-organizer .section-heading{gap:6px;margin:18px 0 6px}
+.reference-studio .research-organizer h2{font:600 11px var(--font-ui);text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:0}
+.reference-studio .research-folder-tree{padding-left:10px;margin:2px 0}
+.reference-studio .research-organizer>.research-folder-tree{padding-left:0}
+.reference-studio .research-folder-tree li{grid-template-columns:minmax(0,1fr) auto}
+.reference-studio .research-folder-tree li>button{display:flex;align-items:center;gap:5px;border:0;padding:7px 4px}
+.reference-studio .research-folder-tree li>button span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reference-studio .research-folder-tree .reference-type-icon{width:15px;height:15px}
+.reference-studio .research-folder-actions>button{border-color:transparent;padding:5px}
+.reference-studio .research-folder-menu{min-width:min(190px,75vw);max-width:85vw}
+.reference-studio .research-library{background:var(--canvas);padding:12px}
+.reference-studio .research-filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:12px;flex:none}
+.reference-studio .research-filters input{grid-column:1/-1;width:100%}
+.reference-studio .research-filters select{width:100%;font-size:11px;padding:6px 4px}
+.reference-studio .research-list{gap:2px;flex:none}
+.reference-studio .research-list>button{grid-template-columns:24px minmax(0,1fr);gap:2px 9px;border:0;border-bottom:1px solid var(--line);border-radius:var(--radius-small);padding:9px 8px;min-height:52px}
+.reference-studio .research-list>button>.reference-type-icon{grid-row:1/3}
+.reference-studio .research-list strong{font-size:12px;line-height:1.4;font-weight:600}
+.reference-studio .research-list small{font-size:10px;line-height:1.4;color:var(--muted)}
+.reference-studio .research-organizer .active,.reference-studio .research-list .active{outline:0;background:var(--active-surface);box-shadow:inset 3px 0 var(--accent)}
+.reference-studio .research-organizer .active:focus-visible,.reference-studio .research-list .active:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.reference-studio .research-preview{background:var(--page);padding:16px 22px}
+.reference-studio .research-source>header{height:auto;min-height:0;grid-template-columns:minmax(0,1fr) auto;background:transparent;gap:6px 12px;padding:0 0 14px}
+.reference-studio .research-title{grid-column:1/-1;font:600 24px/1.4 var(--font-display);border-color:transparent;width:100%;padding:4px 0;background:transparent}
+.reference-studio .research-source>header p{font:11px/1.5 var(--font-ui);color:var(--muted);align-self:center}
+.reference-studio .source-status{padding:10px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;margin:4px 0 12px;font-size:11px;line-height:1.5;color:var(--muted)}
+.reference-studio .source-status strong{font-weight:500;color:var(--text)}
+.reference-studio .source-status button{justify-self:start}
+.reference-studio .source-status.missing{border:1px dashed var(--warning);padding:10px}
+.reference-studio .source-preview{background:var(--canvas);border:1px solid var(--line);border-radius:var(--radius-control);padding:10px;min-height:0;overflow-wrap:anywhere}
+.reference-studio .source-preview.web{font-size:13px;line-height:1.6}
+.reference-studio .preview-controls{gap:5px}
+.reference-studio .preview-controls label{display:flex;align-items:center;gap:4px;font-size:12px}
+.reference-studio .research-rich .tiptap{font:14px/1.7 var(--font-ui);padding:12px;background:var(--page);border-color:var(--line);overflow-wrap:anywhere}
+.reference-studio .research-source h3{font:600 12px/1.4 var(--font-ui);margin:16px 0 8px}
+.reference-studio .section-heading{flex-wrap:wrap;gap:6px}
+.reference-studio .research-source .inline-form select{min-width:0;flex:1 1 160px;width:100%}
+.reference-studio .research-item-actions{gap:6px;padding:12px 0;align-items:center}
+.reference-studio .research-item-actions label{display:grid;gap:4px;font-size:11px;color:var(--muted);flex:1 1 150px}
+.reference-studio .research-source :is(.reference-row,.saved-location){overflow-wrap:anywhere;flex-wrap:wrap;font-size:12px;padding:8px}
+/* Collections remain a compact navigator and a working list, not a card gallery. */
+.reference-studio .collections-nav{padding:16px 12px;background:var(--panel);gap:12px}
+.reference-studio .collections-nav header{flex-wrap:wrap;gap:8px}
+.reference-studio .collections-nav h2{font:600 23px/1.3 var(--font-display)}
+.reference-studio .collections-nav [role=list]{gap:2px}
+.reference-studio .collections-nav [role=list]>button{border-color:transparent;padding:9px 8px;gap:5px;min-height:38px}
+.reference-studio .collections-nav [role=list]>button small{font-size:10px;color:var(--muted)}
+.reference-studio .collections-nav [role=list]>button.active,.reference-studio .collection-view-switch button[aria-pressed=true]{background:var(--active-surface);color:var(--text);box-shadow:inset 3px 0 var(--accent)}
+.reference-studio .collections-content{padding:20px clamp(12px,2vw,28px);background:var(--canvas);scrollbar-gutter:stable}
+.reference-studio .collection-header{gap:10px;background:transparent}
+.reference-studio .collection-header input{font:600 25px/1.4 var(--font-display);width:100%;background:transparent}
+.reference-studio .collection-header small{color:var(--muted);font-size:11px}
+.reference-studio .collection-header>div:last-child{flex:0 1 auto}
+.reference-studio .collection-note{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:10px 0;background:transparent;margin:6px 0 12px}
+.reference-studio .collection-note summary{font-size:12px;color:var(--muted)}
+.reference-studio .workspace-tools{padding:10px 0;gap:8px;background:transparent;border:0;flex-wrap:wrap}
+.reference-studio .workspace-tools label{font-size:11px;color:var(--muted);display:grid;gap:4px}
+.reference-studio .workspace-tools label:has(input[type=checkbox]){display:flex;align-items:center;gap:5px;align-self:center;color:var(--text)}
+.reference-studio .workspace-tools input[type=checkbox]{width:auto;flex:none;margin:0}
+.reference-studio .collection-items{gap:2px}
+.reference-studio .collection-item{padding:8px 10px;border:0;border-bottom:1px solid var(--line);border-radius:var(--radius-small);gap:4px 8px;background:var(--page)}
+.reference-studio .collection-item.selected{box-shadow:inset 3px 0 var(--accent);background:var(--active-surface)}
+.reference-studio .collection-item-main{min-width:0;padding:2px 0}
+.reference-studio .collection-item-main strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;font:600 13px/1.4 var(--font-ui)}
+.reference-studio .collection-item-main small{display:flex;align-items:center;gap:5px;font-size:10px;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+.reference-studio .collection-item-main .reference-type-icon{width:13px;height:13px}
+.reference-studio .collection-item-actions{gap:3px}
+.reference-studio .collection-item-actions button{padding:3px 6px;font-size:11px;border-color:transparent}
+.reference-studio .collection-peek{background:var(--canvas);font:12px/1.6 var(--font-ui);overflow-wrap:anywhere}
+.reference-studio .collection-state{border-radius:var(--radius-small);font-size:10px;padding:2px 5px}
+.reference-studio :is(.pane-resize,.research-separator){background:transparent;border-inline:1px solid var(--line)}
+.reference-studio :is(.pane-resize,.research-separator):hover{background:var(--active-surface)}
+:is(.author-workspace,.detached-shell):has(>.reference-studio){container:reference-host / inline-size}
+@container reference-host (max-width:900px){
+ .reference-studio .research-panes{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)!important;grid-template-rows:auto auto;overflow:auto}
+ .reference-studio .research-organizer,.reference-studio .research-library{max-height:300px;min-height:200px;border-bottom:1px solid var(--line)}
+ .reference-studio .research-preview{grid-column:1/-1;overflow:visible;min-height:350px}
+ .reference-studio .research-separator{display:none}
+}
+@container reference-host (max-width:620px){
+ .reference-studio.collections-workspace{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(150px,25vh) minmax(0,1fr)}
+ .reference-studio.collections-workspace>.pane-resize{display:none}
+ .reference-studio .collections-nav{border-right:0;border-bottom:1px solid var(--line)}
+ .reference-studio .collection-header>div:last-child{justify-content:flex-start}
+ .reference-studio .research-header{flex-wrap:wrap;padding:12px}
+ .reference-studio .research-actions{padding:10px 12px}
+ .reference-studio .research-preview{padding:16px 12px}
+}
+@container reference-host (max-width:400px){
+ .reference-studio .research-panes{grid-template-columns:minmax(0,1fr)!important}
+ .reference-studio .research-organizer{max-height:200px}
+ .reference-studio .research-library{max-height:280px}
+ .reference-studio .research-preview{grid-column:auto}
+ .reference-studio .research-filters{grid-template-columns:minmax(0,1fr)}
+}

@@ -1,0 +1,21 @@
+/* Global dialog polish uses existing semantic tokens and native modality. */
+.shell-dialog{width:min(680px,calc(100vw - 24px));padding:0;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-soft);max-height:calc(100dvh - 24px);overflow:hidden}
+.shell-dialog[open]{display:flex;flex-direction:column;width:min(680px,calc(100vw - 24px));padding:0;max-height:calc(100dvh - 24px);overflow:hidden}
+.shell-dialog>header{flex:none;height:auto;min-height:0;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--elevated);align-items:center}
+.shell-dialog>header h2{font:24px/1.25 var(--font-display,Georgia,serif);overflow-wrap:anywhere}
+.shell-dialog>header button{flex:none;min-width:34px;min-height:34px;padding:4px;font-size:20px;background:transparent}
+.shell-dialog-body{overflow:auto;min-height:0;padding:16px 20px;overflow-wrap:anywhere;scrollbar-gutter:stable}
+.shell-dialog-body p{font-size:13px;line-height:1.55}.shell-dialog-body h3{font-size:16px;margin:0 0 8px}.shell-dialog-body h4{font-size:14px}
+.settings-group{border-top:1px solid var(--line);padding:18px 0 8px}.settings-group>section{padding:0;border:0}.settings-group button{margin:4px 4px 4px 0}
+.shell-dialog-body :is(input,select,textarea,button){max-width:100%;min-width:0}.shell-dialog-body button{white-space:normal;overflow-wrap:anywhere}.shell-dialog-body label:has(input[type=checkbox]){display:flex;gap:8px;align-items:flex-start}.shell-dialog-body input[type=checkbox]{width:auto;flex:none;margin-top:3px}
+.settings-zoom{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-block:12px}.settings-zoom .status-zoom button{margin:0}
+.shell-dialog-body pre{white-space:pre-wrap;overflow-wrap:anywhere}.about-identity{display:flex;align-items:center;gap:16px;margin-bottom:20px}.about-identity img{width:72px;height:72px;object-fit:contain}.about-identity h3{font:28px/1.2 var(--font-display,Georgia,serif)}
+.shell-dialog-body details>summary{cursor:pointer;padding:8px 0;font-weight:600}.shell-dialog-body .project-settings{border-top:1px solid var(--line);margin-top:16px;padding-top:16px}
+@media(max-width:450px){.shell-dialog>header,.shell-dialog-body{padding:12px}.about-identity{gap:10px}.about-identity img{width:48px;height:48px}}
+/* Shared native cards remain the existing design system and business callbacks. */
+dialog.native-modal-card{max-height:calc(100dvh - 24px);max-width:calc(100vw - 24px);overflow:auto;box-sizing:border-box;overflow-wrap:anywhere}
+dialog.native-modal-card :is(input,select,textarea,button){max-width:100%;min-width:0;box-sizing:border-box}
+dialog.native-modal-card button{white-space:normal;overflow-wrap:anywhere}
+dialog.native-modal-card form{min-width:0}
+
+.about-support-link{display:inline-flex;align-items:center;gap:6px;max-width:100%}.about-support-link img{width:20px;height:20px;object-fit:contain;flex:none}

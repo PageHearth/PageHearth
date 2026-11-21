@@ -1,0 +1,4 @@
+import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {getDocument} from 'pdfjs-dist/legacy/build/pdf.mjs';
+const pdf=await getDocument({data:new Uint8Array(await fs.readFile('.acceptance/unified-publication/pipeline/Acceptance.pdf')),fontExtraProperties:true,useSystemFonts:false}).promise;const letters=[];
+for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);await page.getOperatorList();for(const item of (await page.getTextContent()).items)if(item.str?.startsWith('Dear'))letters.push({text:item.str,font:page.commonObjs.get(item.fontName).name});}
+await pdf.cleanup();assert.equal(letters.length,3);assert.equal(letters[0].font,letters[2].font);assert.match(letters[0].font,/Arial/i);assert.match(letters[1].font,/Georgia/i);await fs.writeFile('.acceptance/unified-publication/ux/ui-pdf-glyphs.json',JSON.stringify(letters,null,2));console.log('UI-authored First A/C Arial and Second B Georgia PDF glyphs PASS');

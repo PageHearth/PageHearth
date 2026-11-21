@@ -1,0 +1,4 @@
+import {orientedPng} from './imageOrientation.js';
+import {parentPort,workerData} from 'node:worker_threads';
+import {prepareManuscriptImage,writeManuscriptImage} from './manuscriptImageAssets.js';
+try{const prepared=prepareManuscriptImage(Buffer.from(workerData.bytes));const normalized=workerData.bitmap?prepareManuscriptImage(orientedPng(Buffer.from(workerData.bitmap),prepared.width,prepared.height,workerData.orientation)):undefined;const original=await writeManuscriptImage(workerData.root,prepared);const result=normalized?{...await writeManuscriptImage(workerData.root,normalized),sourceAsset:original.asset,sourceCreated:original.created}:original;parentPort!.postMessage({result});}catch(e){parentPort!.postMessage({error:e instanceof Error?e.message:'Project could not import this image.'});}

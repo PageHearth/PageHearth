@@ -1,0 +1,17 @@
+{
+  "acceptedDevelopmentRevision": "736e6a7cd818c13a13000c972abb15d9e0073059",
+  "sourceArchiveSha256": "4CC7DCDB2B17460BB1E7B158624A6432655227CDB37E4F22CA1529B27AC04731",
+  "history": "Fresh root; no original Git history",
+  "documentationChanges": [
+    "LICENSING.md",
+    "docs/licensing/SOURCE-AVAILABILITY.md",
+    "docs/licensing/MICROSOFT-RECIPIENT-TERMS-PROPOSAL.md",
+    "docs/BETA-INSTRUCTIONS-DRAFT.md"
+  ],
+  "addedFiles": [
+    "README.md",
+    "REPOSITORY-SNAPSHOT.json"
+  ],
+  "applicationCode": "Unchanged",
+  "scan": "No flagged credential/private-path patterns; not a universal secret guarantee"
+}

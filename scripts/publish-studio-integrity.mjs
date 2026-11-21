@@ -1,0 +1,7 @@
+import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';import {extractFile} from '@electron/asar';
+const archive='release/candidates/visual-publish/win-unpacked/resources/app.asar',hash=b=>createHash('sha256').update(b).digest('hex');let compiledFilesMatch=0;
+function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isDirectory())walk(file);else{assert(fs.readFileSync(file).equals(extractFile(archive,file)),file);compiledFilesMatch++;}}}walk('dist');walk('dist-main');
+const old=JSON.parse(fs.readFileSync('.acceptance/reference-closure/sanity.json'));let preservedPriorArtifactsAndGuides=0;
+for(const item of [...old.artifacts,...old.priorArtifacts,...old.guides]){const file=item.file||item.path;assert.equal(hash(fs.readFileSync(file)),item.sha256.toLowerCase(),file);preservedPriorArtifactsAndGuides++;}
+const artifacts=['release/candidates/visual-publish/PageHearth-Setup-0.1.2.exe','release/candidates/visual-publish/win-unpacked/PageHearth.exe'].map(file=>{const b=fs.readFileSync(file);return {file,bytes:b.length,sha256:hash(b)};});
+const result={compiledFilesMatch,preservedPriorArtifactsAndGuides,artifacts};fs.writeFileSync('.acceptance/visual-publish/packaged-integrity.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));

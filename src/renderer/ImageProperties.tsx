@@ -1,0 +1,14 @@
+import {ModalCard} from './ModalCard';
+import {useState} from 'react';
+import type {Editor} from '@tiptap/core';
+import {NodeSelection} from '@tiptap/pm/state';
+import {imageSizes,imageAlignments,validManuscriptImage} from '../shared/manuscriptImages';
+
+export function ImageProperties({editor,onClose,onReplace}:{editor:Editor;onClose:()=>void;onReplace:()=>Promise<unknown>}){
+ const selected=editor.state.selection instanceof NodeSelection&&editor.state.selection.node.type.name==='manuscriptImage'?editor.state.selection.node:null;
+ const [original]=useState(selected),[values,setValues]=useState(selected?.attrs),[error,setError]=useState('');
+ function current(){return !editor.isDestroyed&&editor.state.selection instanceof NodeSelection&&editor.state.selection.node===original;}
+ function close(){onClose();if(!editor.isDestroyed)editor.view.focus();}
+ function save(event:React.FormEvent){event.preventDefault();if(!current()||!validManuscriptImage(values)){setError('Image selection changed. Select the image again.');return;}editor.chain().updateAttributes('manuscriptImage',values).run();close();}
+ return <ModalCard className="manuscript-image-properties" labelledBy="image-properties-title" onClose={close}><h2 id="image-properties-title">Image properties</h2>{!values?<><p>Select an image in the manuscript first.</p><button autoFocus onClick={close}>Close</button></>:<form onSubmit={save}><label>Alt text<input autoFocus value={values.alt} maxLength={10000} onChange={e=>setValues({...values,alt:e.target.value})}/></label><p>Used by screen readers and accessible eBooks.</p><label className="image-checkbox-row"><input aria-describedby="decorative-image-help" type="checkbox" checked={values.decorative} onChange={e=>setValues({...values,decorative:e.target.checked})}/><span>Decorative image</span></label><p id="decorative-image-help">Screen readers can ignore purely decorative artwork.</p><label>Caption<textarea value={values.caption} maxLength={10000} onChange={e=>setValues({...values,caption:e.target.value})}/></label><label>Size<select aria-label="Image size" value={values.size} onChange={e=>setValues({...values,size:e.target.value})}>{imageSizes.map(v=><option key={v} value={v}>{v==='full-width'?'Full width':v[0].toUpperCase()+v.slice(1)}</option>)}</select></label><label>Alignment<select aria-label="Image alignment" value={values.alignment} onChange={e=>setValues({...values,alignment:e.target.value})}>{imageAlignments.map(v=><option key={v}>{v}</option>)}</select></label>{error&&<p role="alert">{error}</p>}<div className="actions"><button type="button" onClick={()=>{if(!current())return;onClose();void onReplace();}}>Replace Image…</button><button type="button" onClick={()=>{if(current())editor.commands.deleteSelection();close();}}>Remove Image</button><button type="button" onClick={close}>Cancel</button><button type="submit">Save</button></div></form>}</ModalCard>;
+}

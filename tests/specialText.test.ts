@@ -1,0 +1,25 @@
+import {it,expect} from 'vitest';
+import {getSchema} from '@tiptap/core';
+import StarterKit from '@tiptap/starter-kit';
+import {EditorState,AllSelection} from '@tiptap/pm/state';
+import {history,undo,redo} from '@tiptap/pm/history';
+import {manuscriptTypography} from '../src/renderer/typography';
+import {specialTextTransaction,SpecialText} from '../src/renderer/specialText';
+import {specialTextStyle,validateSpecialTextStyles} from '../src/shared/specialText';
+import {authoredDelta} from '../src/renderer/authoredActivity';
+import {compilePublication} from '../src/shared/publicationCompiler';
+import {defaultAuthor,validate} from '../src/shared/model';
+import {randomUUID} from 'node:crypto';
+import {canonicalClipboard} from '../src/renderer/continuous';
+const schema=getSchema([StarterKit,...manuscriptTypography]);
+function state(){const doc=schema.nodeFromJSON({type:'doc',content:[{type:'paragraph',content:[{type:'text',text:'Dear friend',marks:[{type:'bold'}]},{type:'hardBreak'},{type:'text',text:'A second line.'}]},{type:'paragraph',content:[{type:'text',text:'Another stanza.'}]}]});return EditorState.create({doc,selection:new AllSelection(doc),plugins:[history()]});}
+it('applies and removes roles across paragraphs without changing prose, marks, line structure or Activity',()=>{const s=state(),next=s.apply(specialTextTransaction(s,'poem'));expect(next.doc.textContent).toBe(s.doc.textContent);expect(authoredDelta(s.doc.textContent,next.doc.textContent)).toEqual({added:0,removed:0});expect(next.doc.child(0).attrs.specialText).toBe('poem');expect(next.doc.child(1).attrs.specialText).toBe('poem');expect(next.doc.child(0).child(0).marks[0].type.name).toBe('bold');expect(next.doc.child(0).child(1).type.name).toBe('hardBreak');expect(next.apply(specialTextTransaction(next,null)).doc.eq(s.doc)).toBe(true);});
+it('undo/redo, canonical clipboard and JSON reopen preserve roles',()=>{const s=state();let next=s.apply(specialTextTransaction(s,'letter'));undo(next,tr=>{next=next.apply(tr);});expect(next.doc.eq(s.doc)).toBe(true);redo(next,tr=>{next=next.apply(tr);});const reopened=schema.nodeFromJSON(next.doc.toJSON());expect(reopened.child(0).attrs.specialText).toBe('letter');expect(canonicalClipboard(next.selection.content()).content.firstChild!.attrs.specialText).toBe('letter');});
+it('HTML never grants trusted Special Text attributes',()=>{const attrs=(SpecialText.config.addGlobalAttributes as Function).call({})[0].attributes.specialText;expect(attrs.parseHTML({getAttribute:()=> 'letter'})).toBeNull();});
+it('compiles semantic roles and existing blockquotes without renderer syntax',()=>{const s=state().apply(specialTextTransaction(state(),'letter')),id=randomUUID();const p={manifest:{version:1 as const,id:randomUUID(),title:'Special text',revision:0,nodes:[{id,title:'Chapter',kind:'Chapter' as const,parent:null}],settings:{editor:{},publication:{},workspace:{}}},documents:{[id]:s.doc.toJSON()},author:defaultAuthor(),recovery:[]};validate(p);const doc=compilePublication(p);expect(doc.sections.find(n=>n.id===id)!.nodes.map(n=>n.role)).toEqual(['letter','letter']);expect(JSON.stringify(doc)).not.toContain('revisionPass');p.documents[id].content.push({type:'blockquote',content:[{type:'paragraph',content:[{type:'text',text:'Quote'}]}]});expect(compilePublication(p).sections.find(n=>n.id===id)!.nodes.at(-1)?.role).toBe('excerpt');});
+it('inherits body and supports bounded role overrides without copying style into prose',()=>{const body={font:'serif',sizePt:11,lineHeight:1.3};expect(specialTextStyle('letter',{letter:{font:'Arial'}},body)).toMatchObject({font:'Arial',sizePt:11,lineHeight:1.3,indentPt:0});expect(specialTextStyle('poem',undefined,body).alignment).toBe('left');expect(()=>validateSpecialTextStyles({letter:{sizePt:NaN}})).toThrow();expect(()=>validateSpecialTextStyles({letter:{font:'bad;injection'}})).toThrow();});
+import {Store} from '../src/main/storage';
+import {promises as fs} from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+it('protected save/reopen and History restore retain canonical Special Text without Activity',async()=>{const root=await fs.mkdtemp(path.join(os.tmpdir(),'ph-special-history-'));let store=new Store(root);try{await store.create('Special');const id=store.project.manifest.nodes[0].id,body=state().apply(specialTextTransaction(state(),'letter')).doc.toJSON();const snap=(await store.history.capture(id,body,'manual','Letter'))!;await store.stageDocument(id,body);await store.release();store=new Store(root);await store.open();expect(store.project.documents[id]).toEqual(body);const normal=state().doc.toJSON();const restore=await store.history.prepareRestore(id,snap.id,normal);expect(restore.body).toEqual(body);await store.stageDocument(id,restore.body);expect((await store.writing.read()).days).toEqual({});}finally{await store.release();await fs.rm(root,{recursive:true,force:true});}});

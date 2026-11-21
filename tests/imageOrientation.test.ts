@@ -1,0 +1,7 @@
+import {it,expect} from 'vitest';import {inflateSync} from 'node:zlib';
+import {jpegOrientation,orientedPng} from '../src/main/imageOrientation.js';
+import {ebookImage} from '../src/main/ebookImages.js';
+function exif(orientation:number){const t=Buffer.alloc(26);t.write('II');t.writeUInt16LE(42,2);t.writeUInt32LE(8,4);t.writeUInt16LE(1,8);t.writeUInt16LE(274,10);t.writeUInt16LE(3,12);t.writeUInt32LE(1,14);t.writeUInt16LE(orientation,18);const app=Buffer.concat([Buffer.from('Exif\0\0'),t]),size=Buffer.alloc(2);size.writeUInt16BE(app.length+2);return Buffer.concat([Buffer.from([255,216,255,225]),size,app,Buffer.from([255,217])]);}
+it.each([1,2,3,4,5,6,7,8])('reads EXIF orientation %s within bounded offsets',n=>expect(jpegOrientation(exif(n))).toBe(n));
+it('rejects malformed EXIF and unsupported orientation values',()=>{expect(()=>jpegOrientation(exif(9))).toThrow();const b=exif(6);b.writeUInt32LE(0x7fffffff,16);expect(()=>jpegOrientation(b)).toThrow();});
+it('creates an upright lossless PNG derivative from clockwise EXIF JPEG pixels',()=>{const bgra=Buffer.from([0,0,255,255,255,0,0,255]),png=orientedPng(bgra,2,1,6),image=ebookImage(png,false);expect([image.width,image.height]).toEqual([1,2]);let at=8;const chunks:Buffer[]=[];while(at<png.length){const length=png.readUInt32BE(at);if(png.toString('ascii',at+4,at+8)==='IDAT')chunks.push(png.subarray(at+8,at+8+length));at+=length+12;}expect([...inflateSync(Buffer.concat(chunks))]).toEqual([0,255,0,0,255,0,0,0,255,255]);expect([...bgra]).toEqual([0,0,255,255,255,0,0,255]);});

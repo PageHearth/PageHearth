@@ -1,0 +1,16 @@
+// Packaged Electron Node/ASAR smoke. This is not native GUI acceptance.
+const path=require('node:path'),fs=require('node:fs/promises'),assert=require('node:assert/strict'),{pathToFileURL}=require('node:url');
+(async()=>{
+ if(!process.versions.electron)throw Error('Run the packaged EXE with ELECTRON_RUN_AS_NODE=1.');
+ const archive=path.resolve(process.argv[2]);const load=p=>import(pathToFileURL(path.join(archive,'dist-main',p)).href);
+ const {Store}=await load('main/storage.js'),{attachComment,captureAnchor,editComment,commentBody}=await load('shared/comments.js'),{manuscriptSchema:schema}=await load('shared/manuscriptSchema.js'),{restoreBackup}=await load('main/archive.js');
+ await fs.mkdir('.acceptance/comments',{recursive:true});const root=await fs.mkdtemp(path.resolve('.acceptance/comments/packaged-'));let store=new Store(root),restored;
+ try{
+ await store.create('Packaged Comments');let p=structuredClone(store.project);const id=p.manifest.nodes[0].id;p.documents[id]={type:'doc',content:[{type:'paragraph',content:[{type:'text',text:'AAA BBB CCC'}]}]};const made=attachComment(p,captureAnchor(id,schema.nodeFromJSON(p.documents[id]),5,8),p.documents[id]);p=await store.commit(editComment(made.project,made.id,{text:'Packaged comment'}));
+ const next=structuredClone(p);next.documents[id].content[0].content[0].text='New AAA BBB CCC';next.author.comments.byId[made.id].anchor.from+=4;next.author.comments.byId[made.id].anchor.to+=4;next.author.comments.documentBases[id]=commentBody(next.documents[id]);await store.stageDocument(id,next.documents[id],next.author.comments,p.author.comments);await store.release();store=new Store(root);await store.open(async()=>true);assert.deepEqual(store.project.documents,next.documents);assert.deepEqual(store.project.author.comments,next.author.comments);
+ const zip=await store.backup();assert.equal(await Store.verifyBackup(zip),true);const destination=await restoreBackup(zip,root);restored=new Store(destination);await restored.open();assert.deepEqual(restored.project.author.comments,next.author.comments);assert.deepEqual(restored.project.documents,next.documents);assert.deepEqual((await store.writing.read()).days,{});
+ // Queue a deletion and insertion burst without waiting between protection calls.
+ let rapid=structuredClone(store.project);const jobs=[];for(let i=0;i<12;i++){const before=rapid.author.comments;rapid=structuredClone(rapid);const text=rapid.documents[id].content[0].content[0].text;rapid.documents[id].content[0].content[0].text=i<6?text+'x':text.slice(0,-1);rapid.author.comments.documentBases[id]=commentBody(rapid.documents[id]);jobs.push(store.stageDocument(id,rapid.documents[id],rapid.author.comments,before));}await Promise.all(jobs);await store.release();store=new Store(root);await store.open(async()=>true);assert.deepEqual(store.project.documents,rapid.documents);assert.deepEqual(store.project.author.comments,rapid.author.comments);
+ console.log(JSON.stringify({root,destination,electron:process.versions.electron,checks:['ASAR schema dependencies','range comment persistence','coupled protected body/anchor recovery','reopen','verified backup','safe restore','zero Activity','rapid queued protection/recovery'],nativeGUI:false},null,2));
+ }finally{await restored?.release();await store.release();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,1786 @@
+{
+  "manifest": {
+    "version": 1,
+    "id": "22222222-2222-4222-8222-222222222222",
+    "title": "Special Text regions",
+    "revision": 0,
+    "nodes": [
+      {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "parent": null,
+        "title": "All roles",
+        "kind": "Chapter"
+      }
+    ],
+    "settings": {
+      "editor": {},
+      "publication": {},
+      "workspace": {}
+    }
+  },
+  "author": {
+    "version": 1,
+    "scenes": "available",
+    "metadata": {},
+    "customFields": {
+      "definitions": [],
+      "values": {}
+    },
+    "notebook": {
+      "folders": [
+        {
+          "id": "bae131f0-de0e-4d1f-b16b-7fd46479d715",
+          "parent": null,
+          "title": "QuickNotes",
+          "order": 0,
+          "system": "quicknotes"
+        }
+      ],
+      "notes": []
+    },
+    "references": [],
+    "corkboards": {},
+    "quickNotes": {
+      "text": ""
+    },
+    "worldBible": {
+      "version": 1,
+      "catalogVersion": 4,
+      "enabledCategories": [
+        "character",
+        "location",
+        "bestiary",
+        "faction",
+        "lore",
+        "glossary",
+        "system"
+      ],
+      "customCategories": [],
+      "entities": [],
+      "fields": [
+        {
+          "id": "00000000-0000-4000-8001-736578000000",
+          "entityType": "character",
+          "label": "Sex",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-616765000000",
+          "entityType": "character",
+          "label": "Age",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-6f6363757061",
+          "entityType": "character",
+          "label": "Occupation / Role",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-6f726967696e",
+          "entityType": "character",
+          "label": "Home / Origin",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-616666696c69",
+          "entityType": "character",
+          "label": "Affiliation",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-676f616c0000",
+          "entityType": "character",
+          "label": "Goal",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-6d6f74697661",
+          "entityType": "character",
+          "label": "Motivation",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-636f6e666c69",
+          "entityType": "character",
+          "label": "Conflict / Obstacle",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-657261000000",
+          "entityType": "character",
+          "label": "Era / Period",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-626f726e0000",
+          "entityType": "character",
+          "label": "Born",
+          "kind": "date",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-646965640000",
+          "entityType": "character",
+          "label": "Died",
+          "kind": "date",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8001-7369676e6966",
+          "entityType": "character",
+          "label": "Significance",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-adf57a330013",
+          "entityType": "location",
+          "label": "Population",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-719c3b130013",
+          "entityType": "location",
+          "label": "Government",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f5a1ad3b0010",
+          "entityType": "location",
+          "label": "Climate",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-65421b950010",
+          "entityType": "location",
+          "label": "Notable Features",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-2198977a0010",
+          "entityType": "location",
+          "label": "Purpose",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-096553b3000e",
+          "entityType": "location",
+          "label": "Owner",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-07b8b7710012",
+          "entityType": "location",
+          "label": "Condition",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-99c37b450010",
+          "entityType": "location",
+          "label": "Terrain",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f1f5e2350010",
+          "entityType": "location",
+          "label": "Hazards",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-d537bfe90010",
+          "entityType": "location",
+          "label": "Government / Control",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-13c854d20017",
+          "entityType": "bestiary",
+          "label": "Classification",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-d63855010010",
+          "entityType": "bestiary",
+          "label": "Habitat",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-2ad46b4e0014",
+          "entityType": "bestiary",
+          "label": "Temperament",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-acc7f84a000f",
+          "entityType": "bestiary",
+          "label": "Threat",
+          "kind": "singleSelect",
+          "options": [
+            "Harmless",
+            "Low",
+            "Moderate",
+            "High",
+            "Severe",
+            "Extreme",
+            "Unknown"
+          ],
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-9bd88c8c000d",
+          "entityType": "bestiary",
+          "label": "Diet",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-c6c8f80c0012",
+          "entityType": "bestiary",
+          "label": "Strengths",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-723f13a90013",
+          "entityType": "bestiary",
+          "label": "Weaknesses",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-3d33a0880012",
+          "entityType": "bestiary",
+          "label": "Abilities / Magic",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-6d909ed80011",
+          "entityType": "bestiary",
+          "label": "Behavior",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f3a497340015",
+          "entityType": "bestiary",
+          "label": "Reproduction",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-5f061d8f0017",
+          "entityType": "bestiary",
+          "label": "Known Location",
+          "kind": "entityReference",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-b5a090060010",
+          "entityType": "bestiary",
+          "label": "History / Significance",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-ab03889e0013",
+          "entityType": "bestiary",
+          "label": "Confidence",
+          "kind": "singleSelect",
+          "options": [
+            "Unknown",
+            "Rumored",
+            "Suspected",
+            "Observed",
+            "Confirmed"
+          ],
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-c03395c7000f",
+          "entityType": "faction",
+          "label": "Purpose",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f47d125e000e",
+          "entityType": "faction",
+          "label": "Leader",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-fe5cb0680014",
+          "entityType": "faction",
+          "label": "Headquarters",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-ac70d2f20011",
+          "entityType": "faction",
+          "label": "Influence",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-caa872190011",
+          "entityType": "faction",
+          "label": "Specialty",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-25668a8a000c",
+          "entityType": "faction",
+          "label": "Seat",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-5bade8f30011",
+          "entityType": "faction",
+          "label": "Territory",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-a59635fb0010",
+          "entityType": "faction",
+          "label": "Ideology / Agenda",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f04995a9000c",
+          "entityType": "faction",
+          "label": "Head",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-032c6a60000d",
+          "entityType": "faction",
+          "label": "Motto",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-58d143be000c",
+          "entityType": "faction",
+          "label": "Base",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-26e938e1000f",
+          "entityType": "faction",
+          "label": "Secrecy / Public Status",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-b802e745000e",
+          "entityType": "faction",
+          "label": "Status",
+          "kind": "singleSelect",
+          "options": [
+            "Active",
+            "Dissolved",
+            "Historical",
+            "Unknown"
+          ],
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-692f7c21000d",
+          "entityType": "lore",
+          "label": "Category",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-fab6dca50008",
+          "entityType": "lore",
+          "label": "Era / Period",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-1b0b75200011",
+          "entityType": "lore",
+          "label": "Significance",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-105a279e000d",
+          "entityType": "lore",
+          "label": "Known By",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-28809b8c0015",
+          "entityType": "lore",
+          "label": "Knowledge Status",
+          "kind": "singleSelect",
+          "options": [
+            "Established",
+            "Believed",
+            "Rumored",
+            "Disputed",
+            "Unknown"
+          ],
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-d055e356000d",
+          "entityType": "lore",
+          "label": "Location",
+          "kind": "entityReference",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-a247be540016",
+          "entityType": "lore",
+          "label": "Involved Factions",
+          "kind": "multiSelect",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-af9ea123000c",
+          "entityType": "lore",
+          "label": "Outcome",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-79e4548e0013",
+          "entityType": "lore",
+          "label": "Culture / Origin",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-d5f45a210010",
+          "entityType": "lore",
+          "label": "Believed By",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-1ab97d570012",
+          "entityType": "lore",
+          "label": "Culture / Group",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-6c9eb42d000b",
+          "entityType": "lore",
+          "label": "Region",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-954c41440014",
+          "entityType": "lore",
+          "label": "Practice / Custom",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-3278826c000e",
+          "entityType": "lore",
+          "label": "Followers",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-03e7783f000b",
+          "entityType": "lore",
+          "label": "Origin",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-acafbc240010",
+          "entityType": "lore",
+          "label": "Core Belief",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-328be6980012",
+          "entityType": "lore",
+          "label": "Sacred Places / Figures",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-af7143e90011",
+          "entityType": "glossary",
+          "label": "Category",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-1958be770018",
+          "entityType": "glossary",
+          "label": "Alternate Forms",
+          "kind": "multiSelect",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-484322930011",
+          "entityType": "glossary",
+          "label": "Language",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-28185f7e0016",
+          "entityType": "glossary",
+          "label": "Pronunciation",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-9fc519df0016",
+          "entityType": "glossary",
+          "label": "Culture / Group",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-c21eddba0010",
+          "entityType": "glossary",
+          "label": "Used By",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-b4706a8d0016",
+          "entityType": "glossary",
+          "label": "Expanded Form",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-ea92d90c0015",
+          "entityType": "system",
+          "label": "Core Principle",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-4bf7bc310013",
+          "entityType": "system",
+          "label": "Access / Who Uses It",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f91bf2bd0017",
+          "entityType": "system",
+          "label": "Cost / Requirement",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-203e3166000d",
+          "entityType": "system",
+          "label": "Limits",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-2eaee7af000d",
+          "entityType": "system",
+          "label": "Source",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-f1e238d4000d",
+          "entityType": "system",
+          "label": "Access",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-38dc6893000b",
+          "entityType": "system",
+          "label": "Cost",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-c387626b0012",
+          "entityType": "system",
+          "label": "Limitations",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-107479200012",
+          "entityType": "system",
+          "label": "Basis / Power Source",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-886a27f20013",
+          "entityType": "system",
+          "label": "Requirements",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-0250989f000d",
+          "entityType": "system",
+          "label": "Inputs",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-64f6c93f000e",
+          "entityType": "system",
+          "label": "Process",
+          "kind": "longText",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "00000000-0000-4000-8011-c411b912000c",
+          "entityType": "system",
+          "label": "Users",
+          "kind": "text",
+          "created": "2026-01-01T00:00:00.000Z",
+          "modified": "2026-01-01T00:00:00.000Z"
+        }
+      ],
+      "templates": [
+        {
+          "id": "00000000-0000-4000-8002-6d61696e0000",
+          "entityType": "character",
+          "name": "Main Character",
+          "fieldIds": [
+            "00000000-0000-4000-8001-736578000000",
+            "00000000-0000-4000-8001-616765000000",
+            "00000000-0000-4000-8001-6f6363757061",
+            "00000000-0000-4000-8001-6f726967696e",
+            "00000000-0000-4000-8001-616666696c69",
+            "00000000-0000-4000-8001-676f616c0000",
+            "00000000-0000-4000-8001-6d6f74697661",
+            "00000000-0000-4000-8001-636f6e666c69"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8002-737570706f72",
+          "entityType": "character",
+          "name": "Supporting Character",
+          "fieldIds": [
+            "00000000-0000-4000-8001-736578000000",
+            "00000000-0000-4000-8001-616765000000",
+            "00000000-0000-4000-8001-6f6363757061",
+            "00000000-0000-4000-8001-6f726967696e",
+            "00000000-0000-4000-8001-616666696c69"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8002-6d696e6f7200",
+          "entityType": "character",
+          "name": "Minor Character",
+          "fieldIds": [
+            "00000000-0000-4000-8001-6f6363757061",
+            "00000000-0000-4000-8001-616666696c69"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8002-686973746f72",
+          "entityType": "character",
+          "name": "Historical Figure",
+          "fieldIds": [
+            "00000000-0000-4000-8001-657261000000",
+            "00000000-0000-4000-8001-626f726e0000",
+            "00000000-0000-4000-8001-646965640000",
+            "00000000-0000-4000-8001-6f6363757061",
+            "00000000-0000-4000-8001-616666696c69",
+            "00000000-0000-4000-8001-7369676e6966"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8002-626c616e6b00",
+          "entityType": "character",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-88849fff0013",
+          "entityType": "location",
+          "name": "Settlement",
+          "fieldIds": [
+            "00000000-0000-4000-8011-adf57a330013",
+            "00000000-0000-4000-8011-719c3b130013",
+            "00000000-0000-4000-8011-f5a1ad3b0010",
+            "00000000-0000-4000-8011-65421b950010"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-aad7ba940011",
+          "entityType": "location",
+          "name": "Building",
+          "fieldIds": [
+            "00000000-0000-4000-8011-2198977a0010",
+            "00000000-0000-4000-8011-096553b3000e",
+            "00000000-0000-4000-8011-07b8b7710012",
+            "00000000-0000-4000-8011-65421b950010"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-ff79eeb80013",
+          "entityType": "location",
+          "name": "Wilderness",
+          "fieldIds": [
+            "00000000-0000-4000-8011-99c37b450010",
+            "00000000-0000-4000-8011-f5a1ad3b0010",
+            "00000000-0000-4000-8011-f1f5e2350010",
+            "00000000-0000-4000-8011-65421b950010"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-54dea6f8000f",
+          "entityType": "location",
+          "name": "Region",
+          "fieldIds": [
+            "00000000-0000-4000-8011-f5a1ad3b0010",
+            "00000000-0000-4000-8011-99c37b450010",
+            "00000000-0000-4000-8011-d537bfe90010",
+            "00000000-0000-4000-8011-65421b950010"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-672f0b32000e",
+          "entityType": "location",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-9e1a7ddc000e",
+          "entityType": "bestiary",
+          "name": "Basic Creature",
+          "fieldIds": [
+            "00000000-0000-4000-8011-13c854d20017",
+            "00000000-0000-4000-8011-d63855010010",
+            "00000000-0000-4000-8011-2ad46b4e0014",
+            "00000000-0000-4000-8011-acc7f84a000f"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-f0c33dae0011",
+          "entityType": "bestiary",
+          "name": "Detailed Creature",
+          "fieldIds": [
+            "00000000-0000-4000-8011-13c854d20017",
+            "00000000-0000-4000-8011-d63855010010",
+            "00000000-0000-4000-8011-2ad46b4e0014",
+            "00000000-0000-4000-8011-9bd88c8c000d",
+            "00000000-0000-4000-8011-c6c8f80c0012",
+            "00000000-0000-4000-8011-723f13a90013",
+            "00000000-0000-4000-8011-3d33a0880012",
+            "00000000-0000-4000-8011-6d909ed80011",
+            "00000000-0000-4000-8011-f3a497340015",
+            "00000000-0000-4000-8011-acc7f84a000f"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-8ef9c1b9000f",
+          "entityType": "bestiary",
+          "name": "Unique Being",
+          "fieldIds": [
+            "00000000-0000-4000-8011-13c854d20017",
+            "00000000-0000-4000-8011-5f061d8f0017",
+            "00000000-0000-4000-8011-2ad46b4e0014",
+            "00000000-0000-4000-8011-3d33a0880012",
+            "00000000-0000-4000-8011-b5a090060010",
+            "00000000-0000-4000-8011-acc7f84a000f"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-a93bd8ec000e",
+          "entityType": "bestiary",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-1b99d8c9000f",
+          "entityType": "faction",
+          "name": "General Faction",
+          "fieldIds": [
+            "00000000-0000-4000-8011-c03395c7000f",
+            "00000000-0000-4000-8011-f47d125e000e",
+            "00000000-0000-4000-8011-fe5cb0680014",
+            "00000000-0000-4000-8011-ac70d2f20011"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-093c8aee000d",
+          "entityType": "faction",
+          "name": "Guild / Order",
+          "fieldIds": [
+            "00000000-0000-4000-8011-c03395c7000f",
+            "00000000-0000-4000-8011-f47d125e000e",
+            "00000000-0000-4000-8011-fe5cb0680014",
+            "00000000-0000-4000-8011-caa872190011"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-2e663b440012",
+          "entityType": "faction",
+          "name": "Government / Political",
+          "fieldIds": [
+            "00000000-0000-4000-8011-f47d125e000e",
+            "00000000-0000-4000-8011-25668a8a000c",
+            "00000000-0000-4000-8011-5bade8f30011",
+            "00000000-0000-4000-8011-a59635fb0010"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-87d37b6d000d",
+          "entityType": "faction",
+          "name": "House / Clan",
+          "fieldIds": [
+            "00000000-0000-4000-8011-f04995a9000c",
+            "00000000-0000-4000-8011-25668a8a000c",
+            "00000000-0000-4000-8011-032c6a60000d",
+            "00000000-0000-4000-8011-ac70d2f20011"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-ab6d1333000e",
+          "entityType": "faction",
+          "name": "Secret Society",
+          "fieldIds": [
+            "00000000-0000-4000-8011-c03395c7000f",
+            "00000000-0000-4000-8011-f47d125e000e",
+            "00000000-0000-4000-8011-58d143be000c",
+            "00000000-0000-4000-8011-26e938e1000f"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-66a8123f000d",
+          "entityType": "faction",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-8ff9a13b000c",
+          "entityType": "lore",
+          "name": "General Lore",
+          "fieldIds": [
+            "00000000-0000-4000-8011-692f7c21000d",
+            "00000000-0000-4000-8011-fab6dca50008",
+            "00000000-0000-4000-8011-1b0b75200011",
+            "00000000-0000-4000-8011-105a279e000d",
+            "00000000-0000-4000-8011-28809b8c0015"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-085cfd4f000c",
+          "entityType": "lore",
+          "name": "History / Event",
+          "fieldIds": [
+            "00000000-0000-4000-8011-fab6dca50008",
+            "00000000-0000-4000-8011-d055e356000d",
+            "00000000-0000-4000-8011-a247be540016",
+            "00000000-0000-4000-8011-af9ea123000c",
+            "00000000-0000-4000-8011-28809b8c0015"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-fa3f1e470009",
+          "entityType": "lore",
+          "name": "Myth / Legend",
+          "fieldIds": [
+            "00000000-0000-4000-8011-79e4548e0013",
+            "00000000-0000-4000-8011-fab6dca50008",
+            "00000000-0000-4000-8011-d5f45a210010",
+            "00000000-0000-4000-8011-1b0b75200011",
+            "00000000-0000-4000-8011-28809b8c0015"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-949c1981000c",
+          "entityType": "lore",
+          "name": "Culture / Tradition",
+          "fieldIds": [
+            "00000000-0000-4000-8011-1ab97d570012",
+            "00000000-0000-4000-8011-6c9eb42d000b",
+            "00000000-0000-4000-8011-954c41440014",
+            "00000000-0000-4000-8011-1b0b75200011",
+            "00000000-0000-4000-8011-28809b8c0015"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-969a3fd6000d",
+          "entityType": "lore",
+          "name": "Religion / Belief",
+          "fieldIds": [
+            "00000000-0000-4000-8011-3278826c000e",
+            "00000000-0000-4000-8011-03e7783f000b",
+            "00000000-0000-4000-8011-acafbc240010",
+            "00000000-0000-4000-8011-328be6980012",
+            "00000000-0000-4000-8011-28809b8c0015"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-22d2c831000a",
+          "entityType": "lore",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-01dbd9d30010",
+          "entityType": "glossary",
+          "name": "General Term",
+          "fieldIds": [
+            "00000000-0000-4000-8011-af7143e90011",
+            "00000000-0000-4000-8011-1958be770018"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-484322930011",
+          "entityType": "glossary",
+          "name": "Language / Word",
+          "fieldIds": [
+            "00000000-0000-4000-8011-484322930011",
+            "00000000-0000-4000-8011-28185f7e0016",
+            "00000000-0000-4000-8011-1958be770018"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-f559a471000e",
+          "entityType": "glossary",
+          "name": "Title / Honorific",
+          "fieldIds": [
+            "00000000-0000-4000-8011-9fc519df0016",
+            "00000000-0000-4000-8011-c21eddba0010",
+            "00000000-0000-4000-8011-1958be770018"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-202715790015",
+          "entityType": "glossary",
+          "name": "Abbreviation / Acronym",
+          "fieldIds": [
+            "00000000-0000-4000-8011-b4706a8d0016",
+            "00000000-0000-4000-8011-af7143e90011"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-f8a71db9000e",
+          "entityType": "glossary",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-f2fa5f9a000e",
+          "entityType": "system",
+          "name": "General System",
+          "fieldIds": [
+            "00000000-0000-4000-8011-ea92d90c0015",
+            "00000000-0000-4000-8011-4bf7bc310013",
+            "00000000-0000-4000-8011-f91bf2bd0017",
+            "00000000-0000-4000-8011-203e3166000d"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-ac798d29000c",
+          "entityType": "system",
+          "name": "Magic System",
+          "fieldIds": [
+            "00000000-0000-4000-8011-2eaee7af000d",
+            "00000000-0000-4000-8011-f1e238d4000d",
+            "00000000-0000-4000-8011-38dc6893000b",
+            "00000000-0000-4000-8011-c387626b0012"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-54522b300011",
+          "entityType": "system",
+          "name": "Technology",
+          "fieldIds": [
+            "00000000-0000-4000-8011-107479200012",
+            "00000000-0000-4000-8011-f1e238d4000d",
+            "00000000-0000-4000-8011-886a27f20013",
+            "00000000-0000-4000-8011-c387626b0012"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-cbad25e9000e",
+          "entityType": "system",
+          "name": "Alchemy / Crafting",
+          "fieldIds": [
+            "00000000-0000-4000-8011-0250989f000d",
+            "00000000-0000-4000-8011-64f6c93f000e",
+            "00000000-0000-4000-8011-886a27f20013",
+            "00000000-0000-4000-8011-c387626b0012"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-58e18023000c",
+          "entityType": "system",
+          "name": "Power / Ability System",
+          "fieldIds": [
+            "00000000-0000-4000-8011-2eaee7af000d",
+            "00000000-0000-4000-8011-c411b912000c",
+            "00000000-0000-4000-8011-38dc6893000b",
+            "00000000-0000-4000-8011-203e3166000d"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8012-685a2748000c",
+          "entityType": "system",
+          "name": "Blank",
+          "fieldIds": [],
+          "builtIn": true
+        }
+      ],
+      "relationshipTypes": [
+        {
+          "id": "00000000-0000-4000-8003-72656c617465",
+          "name": "Related to",
+          "direction": "symmetric",
+          "defaultGroup": "Family",
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-667269656e64",
+          "name": "Friend",
+          "direction": "symmetric",
+          "defaultGroup": "Friends / Allies",
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-726976616c00",
+          "name": "Rival",
+          "direction": "symmetric",
+          "defaultGroup": "Rivals / Enemies",
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-6d656d626572",
+          "name": "Member of",
+          "direction": "reverse",
+          "reverseName": "Has member",
+          "defaultGroup": "Organizations",
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-6c6f63617465",
+          "name": "Located in",
+          "direction": "reverse",
+          "reverseName": "Contains",
+          "defaultGroup": "General",
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-6173736f6369",
+          "name": "Associated with",
+          "direction": "symmetric",
+          "defaultGroup": "General",
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-6e6561720000",
+          "name": "Near",
+          "direction": "symmetric",
+          "defaultGroup": "Spatial",
+          "sourceTypes": [
+            "location"
+          ],
+          "targetTypes": [
+            "location"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-6e6f72746800",
+          "name": "North of",
+          "direction": "reverse",
+          "reverseName": "South of",
+          "defaultGroup": "Spatial",
+          "sourceTypes": [
+            "location"
+          ],
+          "targetTypes": [
+            "location"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-61646a616365",
+          "name": "Adjacent to",
+          "direction": "symmetric",
+          "defaultGroup": "Spatial",
+          "sourceTypes": [
+            "location"
+          ],
+          "targetTypes": [
+            "location"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-6c6561646572",
+          "name": "Leader of",
+          "direction": "reverse",
+          "reverseName": "Led by",
+          "defaultGroup": "Leadership",
+          "sourceTypes": [
+            "character"
+          ],
+          "targetTypes": [
+            "faction"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-616c6c696564",
+          "name": "Allied with",
+          "direction": "symmetric",
+          "defaultGroup": "Allies",
+          "sourceTypes": [
+            "faction"
+          ],
+          "targetTypes": [
+            "faction"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-626173656400",
+          "name": "Based in",
+          "direction": "reverse",
+          "reverseName": "Base of",
+          "defaultGroup": "Locations",
+          "sourceTypes": [
+            "faction"
+          ],
+          "targetTypes": [
+            "location"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-68756e747300",
+          "name": "Hunts",
+          "direction": "oneWay",
+          "defaultGroup": "Creatures",
+          "sourceTypes": [
+            "faction"
+          ],
+          "targetTypes": [
+            "bestiary"
+          ],
+          "builtIn": true
+        },
+        {
+          "id": "00000000-0000-4000-8003-686162697461",
+          "name": "Known at",
+          "direction": "reverse",
+          "reverseName": "Habitat of",
+          "defaultGroup": "Locations",
+          "sourceTypes": [
+            "bestiary"
+          ],
+          "targetTypes": [
+            "location"
+          ],
+          "builtIn": true
+        }
+      ],
+      "relationships": [],
+      "categoryViews": {
+        "character": {
+          "view": "gallery",
+          "secondaryField": "summary",
+          "sort": "az",
+          "favoritesOnly": false
+        },
+        "location": {
+          "view": "gallery",
+          "secondaryField": "summary",
+          "sort": "az",
+          "favoritesOnly": false
+        },
+        "bestiary": {
+          "view": "gallery",
+          "secondaryField": "00000000-0000-4000-8011-13c854d20017",
+          "sort": "az",
+          "favoritesOnly": false
+        },
+        "faction": {
+          "view": "gallery",
+          "secondaryField": "summary",
+          "sort": "az",
+          "favoritesOnly": false
+        },
+        "lore": {
+          "view": "gallery",
+          "secondaryField": "body",
+          "sort": "az",
+          "favoritesOnly": false
+        },
+        "glossary": {
+          "view": "list",
+          "secondaryField": "body",
+          "sort": "az",
+          "favoritesOnly": false
+        },
+        "system": {
+          "view": "gallery",
+          "secondaryField": "00000000-0000-4000-8011-ea92d90c0015",
+          "sort": "az",
+          "favoritesOnly": false
+        }
+      },
+      "recentEntityIds": []
+    },
+    "research": {
+      "version": 1,
+      "folders": [],
+      "items": []
+    },
+    "collections": {
+      "version": 1,
+      "items": []
+    }
+  },
+  "documents": {
+    "11111111-1111-4111-8111-111111111111": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body before the Letter."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "letter"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "letter first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "letter"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "letter"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "letter"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after letter"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "poem"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "poem first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "poem"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "poem"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "poem"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after poem"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "written-note"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "written-note first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "written-note"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "written-note"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "written-note"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after written-note"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "journal"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "journal first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "journal"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "journal"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "journal"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after journal"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "excerpt"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "excerpt first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "excerpt"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "excerpt"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "excerpt"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after excerpt"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "document"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "document first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "document"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "document"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "document"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after document"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "custom"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "custom first line"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "custom"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Second line of the region"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "custom"
+          },
+          "content": []
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "specialText": "custom"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Next stanza or paragraph"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Normal body after custom"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "recovery": []
+}

@@ -1,0 +1,12 @@
+import {test,expect,_electron as electron} from '@playwright/test';
+import {promises as fs} from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {randomUUID} from 'node:crypto';
+import {Store} from '../src/main/storage';
+test('Continuous manuscript retains canonical owners and protects boundaries in the installed editor',async()=>{
+ const base=await fs.mkdtemp(path.join(os.tmpdir(),'pagehearth-continuous-native-')),root=path.join(base,'Project');await fs.mkdir(root);const store=new Store(root);await store.create('Continuous acceptance');const p=structuredClone(store.project),a=p.manifest.nodes[0].id,b=randomUUID();p.manifest.nodes.push({id:b,parent:a,title:'Scene Two',kind:'Scene'});p.documents[b]={type:'doc',content:[{type:'paragraph',content:[{type:'text',text:'Scene text'}]}]};await store.commit(p);await store.release();
+ const app=await electron.launch({...(process.env.PAGEHEARTH_EXECUTABLE?{executablePath:process.env.PAGEHEARTH_EXECUTABLE}:{}),args:[...(process.env.PAGEHEARTH_EXECUTABLE?[]:['.']),`--user-data-dir=${path.join(base,'profile')}`,path.join(root,'project.pagehearth')]});
+ try{const page=await app.firstWindow();await expect(page.getByLabel('Manuscript editor',{exact:true})).toBeVisible();await page.locator('#tree-'+a).click({button:'right'});await page.getByRole('menuitem',{name:'Open as Continuous Manuscript'}).click();await expect(page.locator('.manuscript-segment')).toHaveCount(2);await page.locator(`[data-document-id="${b}"] .manuscript-body p`).click({position:{x:5,y:8}});await page.keyboard.press('End');await page.keyboard.type(' protected edit');await page.keyboard.press('Control+s');await expect(page.locator('.app-status')).toContainText('Saved');await page.keyboard.press('Control+a');await page.keyboard.type('must not replace scope');await expect(page.locator('.manuscript-segment')).toHaveCount(2);await expect(page.getByLabel('Manuscript editor',{exact:true})).not.toContainText('must not replace scope');}finally{await app.close();}
+ const reopened=new Store(root);try{await reopened.open();expect(JSON.stringify(reopened.project.documents[b])).toContain('protected edit');expect(JSON.stringify(reopened.project.documents[a])).not.toContain('protected edit');}finally{await reopened.release();const resolved=path.resolve(base);if(!resolved.startsWith(path.resolve(os.tmpdir())+path.sep))throw Error('Unsafe fixture cleanup');await fs.rm(resolved,{recursive:true,force:true});}
+});

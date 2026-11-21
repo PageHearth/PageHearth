@@ -1,0 +1,14 @@
+import {promises as fs} from 'node:fs';
+import path from 'node:path';
+import {randomUUID,createHash} from 'node:crypto';
+import {TemplateError,requireTemplate,safeFileName,TEMPLATE_LIMITS} from '../shared/templateSafety.js';
+
+export const digest=(bytes:Uint8Array|string)=>createHash('sha256').update(bytes).digest('hex');
+export function fileError(error:unknown,field=''):TemplateError{return error instanceof TemplateError?error:new TemplateError('FILESYSTEM','The file operation could not finish. '+String(error),field);}
+export async function ordinaryDirectory(input:string){requireTemplate(path.isAbsolute(input),'PATH','Choose an absolute local directory.');const absolute=path.resolve(input);let at=path.parse(absolute).root;for(const part of absolute.slice(at.length).split(path.sep).filter(Boolean)){at=path.join(at,part);const stat=await fs.lstat(at);requireTemplate(stat.isDirectory()&&!stat.isSymbolicLink(),'PATH','Directory links/reparse paths are not supported.',at);}return absolute;}
+export async function boundedFile(file:string){const stat=await fs.lstat(file);requireTemplate(stat.isFile()&&!stat.isSymbolicLink()&&stat.size<=TEMPLATE_LIMITS.bytes,'FILE','Choose an ordinary template file no larger than 4 MiB.',file);const h=await fs.open(file,'r');try{const opened=await h.stat();requireTemplate(opened.ino===stat.ino&&opened.size<=TEMPLATE_LIMITS.bytes,'STALE','Template changed during opening.');const bytes=Buffer.alloc(TEMPLATE_LIMITS.bytes+1);let count=0;while(count<bytes.length){const r=await h.read(bytes,count,bytes.length-count,null);if(!r.bytesRead)break;count+=r.bytesRead;}requireTemplate(count<=TEMPLATE_LIMITS.bytes,'FILE_TOO_LARGE','Template exceeds 4 MiB.');try{return new TextDecoder('utf-8',{fatal:true}).decode(bytes.subarray(0,count));}catch{throw new TemplateError('UTF8','Template is not valid UTF-8.');}}finally{await h.close();}}
+export async function syncedTemp(directory:string,data:string){const temp=path.join(directory,'.pagehearth-template-'+randomUUID()+'.tmp'),h=await fs.open(temp,'wx');try{await h.writeFile(data,'utf8');await h.sync();}finally{await h.close();}return temp;}
+/** Hard-link publication is atomic and fails if destination exists; no overwrite fallback. */
+export async function publishNewFile(temp:string,target:string){try{await fs.link(temp,target);}catch(e:any){if(e.code==='EEXIST')throw new TemplateError('COLLISION','A file with that name already exists.',target);throw e;}await fs.unlink(temp);}
+export async function absent(target:string){try{await fs.lstat(target);throw new TemplateError('COLLISION','The destination already exists.',target);}catch(e:any){if(e.code!=='ENOENT')throw e;}}
+export function childPath(parent:string,name:string){safeFileName(name);const result=path.resolve(parent,name);requireTemplate(path.dirname(result)===path.resolve(parent)&&result.length<=240,'PATH','Destination escapes its parent or exceeds the supported 240-character path limit.');return result;}

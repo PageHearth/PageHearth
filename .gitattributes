@@ -1,0 +1,34 @@
+# Normalize text files in the repository.
+* text=auto
+
+# Source/config/documentation should remain LF across platforms.
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cts text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Binary assets must never receive line-ending conversion.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.gif binary
+*.webp binary
+*.pdf binary
+
+# Pinned EPUB validation distributions must retain exact upstream bytes/checksums.
+# Upstream license whitespace is intentional and must not be rewritten.
+assets/epub/** -text -whitespace
+
+# Preserve newly retained upstream distribution materials and receipt hashes.
+assets/distribution-sources/** -text -whitespace
+assets/licenses/canvas-native/** -text -whitespace
+assets/licenses/newcm/** -text -whitespace
+assets/licenses/nsis/** -text -whitespace

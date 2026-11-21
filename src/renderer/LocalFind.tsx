@@ -1,0 +1,14 @@
+import {literalMatches} from '../shared/search';
+import {useEffect,useState,useMemo} from 'react';
+import type {Editor} from '@tiptap/core';
+import {segments,segmentAt} from './continuous';
+export function editorMatches(editor:Editor,query:string){const found:{from:number;to:number}[]=[];if(!query)return found;editor.state.doc.descendants((node,pos)=>{if(!node.isTextblock)return;let text='',positions:number[]=[];node.descendants((child,offset)=>{if(child.isText){for(let i=0;i<child.text!.length;i++){text+=child.text![i];positions.push(pos+1+offset+i);}}else if(child.type.name==='hardBreak'){text+='\n';positions.push(pos+1+offset);}});for(const hit of literalMatches(text,query,{caseSensitive:false,wholeWord:false}))found.push({from:positions[hit.from],to:positions[hit.to-1]+1});return false;});return found;}
+export function LocalFind({editor,open,onClose}:{editor:Editor|null;open:boolean;onClose:()=>void}){
+ const [query,setQuery]=useState(''),[replacement,setReplacement]=useState(''),[index,setIndex]=useState(-1),[revision,setRevision]=useState(0);
+ useEffect(()=>{if(!editor)return;const update=()=>setRevision(n=>n+1);editor.on('update',update);return()=>{editor.off('update',update);};},[editor]);
+ const matches=useMemo(()=>open&&editor?editorMatches(editor,query):[],[open,editor,query,revision]);
+ if(!open||!editor)return null;
+ function next(delta:number){if(!matches.length)return;const i=(index+delta+matches.length)%matches.length;setIndex(i);editor!.chain().setTextSelection(matches[i]).scrollIntoView().run();}
+ function replace(){const {from,to}=editor!.state.selection;const match=matches.find(m=>m.from===from&&m.to===to);if(!match)return;if(segments(editor!.state.doc).length&&segmentAt(editor!.state.doc,from)?.id!==segmentAt(editor!.state.doc,to)?.id)return;editor!.view.dispatch(editor!.state.tr.insertText(replacement,match.from,match.to).setMeta('revision-origin','text'));setIndex(-1);}
+ return <section className="local-find" role="search" aria-label="Find in manuscript" onKeyDown={e=>{if(e.key==='Escape'){e.preventDefault();onClose();editor.commands.focus();}if(e.key==='Enter'){e.preventDefault();next(e.shiftKey?-1:1);}}}><label>Find<input autoFocus aria-label="Find in current manuscript scope" value={query} onChange={e=>{setQuery(e.target.value);setIndex(-1);}}/></label><span role="status">{matches.length} matches</span><button disabled={!matches.length} onClick={()=>next(-1)}>Previous</button><button disabled={!matches.length} onClick={()=>next(1)}>Next</button><label>Replace<input aria-label="Replacement text" value={replacement} onChange={e=>setReplacement(e.target.value)}/></label><button disabled={!matches.length} onClick={replace}>Replace selected match</button><button disabled title="Replace All across documents is not available in Continuous Manuscript yet.">Replace All</button><button aria-label="Close Find" onClick={onClose}>×</button></section>;
+}
