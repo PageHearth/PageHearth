@@ -76,7 +76,4 @@ directory through its child-process PATH on Windows. No separate Visual C++
 installation or system PATH change is required. Hush reported all five focused native acceptance groups PASS for the replacement
 internal candidate. Distribution still requires separate approval.
 
-Beta 1 still checks ThatsHush/StoryLoom for stable updates and does not discover
-prereleases or updates in the new application repository. Check the new repository
-release page manually. The original development repository is not the beta delivery
-endpoint; no update-routing change or rebuild is part of this preparation.
+Beta 1 checks the official PageHearth/PageHearth repository for stable releases. A future stable v1.0.0 is discoverable from 0.1.2. Prereleases are excluded; before the first stable release, no published release is an expected result. Download opens the GitHub release page in your browser, with no automatic download or installation.

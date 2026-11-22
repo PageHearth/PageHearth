@@ -1,8 +1,8 @@
 {
   "version": "0.1.2",
   "baseRevision": "736e6a7cd818c13a13000c972abb15d9e0073059",
-  "sourceState": "Committed checkpoint; per-file hashes and compiled-output correspondence",
-  "installerSha256": "B730A5894ED36985276168E1B7D22E56C06C1C20FF88A721C7EDCAF30108EFB6",
+  "sourceState": "Official repository updater correction; per-file hashes below. Archive delivery manifest identifies the resulting Git checkpoint.",
+  "installerSha256": "542373E3F3FE0BA9351D350005F86F08E8EE1F214905B314524437C1FC8967A7",
   "compiled": [
     {
       "path": "dist/assets/cup-GwDofwnv.avif",
@@ -381,8 +381,8 @@
     },
     {
       "path": "dist-main/main/updateAdapter.js",
-      "bytes": 3586,
-      "sha256": "EE8C42F7346466C7F8A3647E3C255E02743462AF0A7BEF50532239981C33BA9B"
+      "bytes": 3590,
+      "sha256": "197A426A711E4FD9D4D7CC3B6AE96DBF389576387D4E6812C175886088661DAF"
     },
     {
       "path": "dist-main/main/updateService.js",
@@ -743,8 +743,8 @@
     },
     {
       "path": "LICENSING.md",
-      "bytes": 3321,
-      "sha256": "CE093B3510D3AB36AC535E27E68ECC826982BAFBB39F1E69E9ED9642B5583760"
+      "bytes": 2653,
+      "sha256": "1CBF415DEC883A0897A9CF5FB6087286C8AA352A7F3B76F79DD06B1E5A61F8A1"
     },
     {
       "path": "assets/epub/NOTICE.md",
@@ -2133,8 +2133,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 3814,
-      "sha256": "F8797368B200757A2D355C69DC173113737F8FF337B189E89CEE5EEE13812D5D"
+      "bytes": 3816,
+      "sha256": "167A8D3C239A4970293CB12D8A47DBAE2FF4C4C5706AF8BC54D85AA5248FB9BC"
     },
     {
       "path": "playwright.config.ts",
@@ -3483,8 +3483,8 @@
     },
     {
       "path": "src/main/updateAdapter.ts",
-      "bytes": 3422,
-      "sha256": "2975261ECF4AFC6906FF52A67D29A691CFA24503453DC69B8409B1988DBA8F98"
+      "bytes": 3426,
+      "sha256": "1EAB054C3EB1555F9E1BA318A184AB0BD2C78C7747BBA422EBB32431EB2B9370"
     },
     {
       "path": "src/main/updateService.ts",
@@ -5138,13 +5138,13 @@
     },
     {
       "path": "tests/updateAdapter.test.ts",
-      "bytes": 4202,
-      "sha256": "FEB5AD4148479BB65FC6F424CE26C4764B2698BE3720F5FBE50C6C3AA36F62F8"
+      "bytes": 5237,
+      "sha256": "1A40A45D5EA20FE9480D14D85860441A80622A78C4E1210C13EA7516322124A8"
     },
     {
       "path": "tests/updates.test.ts",
-      "bytes": 5173,
-      "sha256": "7AF4CC9C17961C778C05CF68EB6C11FD0EC6E94132D9E9E6493E38652F460860"
+      "bytes": 5175,
+      "sha256": "CF77966E08FCC9883E02FC04B6B1824278D9939359BE227A91851675D7E44CA0"
     },
     {
       "path": "tests/wave2D.test.ts",
@@ -5218,8 +5218,8 @@
     },
     {
       "path": "docs/licensing/SOURCE-AVAILABILITY.md",
-      "bytes": 4029,
-      "sha256": "E08EBF2EE167447E5462259B68A2D99FC71E81EE8A9089B8AB00E359DD544F3C"
+      "bytes": 4136,
+      "sha256": "143771EEB822F29810332FFEEE4119E27B1868591363C45252A296CA69DB0213"
     },
     {
       "path": "docs/licensing/THIRD-PARTY-NOTICES.md",
@@ -5238,13 +5238,28 @@
     },
     {
       "path": "docs/licensing/MICROSOFT-RECIPIENT-TERMS-PROPOSAL.md",
-      "bytes": 4048,
-      "sha256": "B562AA5A53FA311761ED5320D3970ACD01CFCDB4F8D4F86FF7E26FA88CAF52C6"
+      "bytes": 4032,
+      "sha256": "6E57B53283599436541173E76AEDB7E5E9005FBB5FF47DE579A45F73D3407AFE"
     },
     {
       "path": "docs/BETA-INSTRUCTIONS-DRAFT.md",
-      "bytes": 4612,
-      "sha256": "F4EC38BD3D317AFD6620E5B68F023BC184A444EE0A9249B25C286E53B7DD2512"
+      "bytes": 4961,
+      "sha256": "72E6A8CA7D1C347B94E853C6B520FDA4F78DD3447F308230072F35BB73631AD7"
+    },
+    {
+      "path": "scripts/package-official-repository-updater.cjs",
+      "bytes": 4983,
+      "sha256": "3F828C51237D4B74E7C114B32F253561CD960AC615C6870ABFA6837FE67B0B2E"
+    },
+    {
+      "path": "scripts/verify-official-updater.cjs",
+      "bytes": 2722,
+      "sha256": "60799DA71A4A061A894DDAA6897B95DFB42A90AC1639C21BDC3CAB3E44CC3463"
+    },
+    {
+      "path": "scripts/official-updater-gui-smoke.cjs",
+      "bytes": 2832,
+      "sha256": "642A81EA1B8C3929AC0443EC40396C12FBE88A9DB5E9A602EB3C038A5A8C4447"
     }
   ],
   "excludedTrackedFiles": [
