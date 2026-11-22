@@ -1,0 +1,40 @@
+Microsoft runtime components included with PageHearth 0.1.2 for Windows
+
+The bundled Eclipse Temurin Java runtime includes the following unmodified
+application-local Microsoft runtime components:
+
+- Microsoft Visual C++ runtime: msvcp140.dll, vcruntime140.dll and
+  vcruntime140_1.dll. The inspected Beta 1 files report version 14.40.33810.0.
+- Microsoft Universal C Runtime: ucrtbase.dll (10.0.26100.1742) and the
+  api-ms-win-crt-*-l1-1-0.dll interfaces for conio, convert, environment,
+  filesystem, heap, locale, math, multibyte, private, process, runtime, stdio,
+  string, time and utility (sixteen UCRT files in total).
+
+Copyright notice retained from the inspected Microsoft runtime files:
+© Microsoft Corporation. All rights reserved.
+
+These binaries are separately licensed Microsoft components. PageHearth's
+MPL-2.0 license covers its original application source, not these binaries.
+The OpenJDK license does not relicense Microsoft components. Preserve their
+existing copyright, patent, trademark and license notices. No Microsoft
+endorsement of PageHearth is implied. Other components retain their own rights.
+
+Official licensing references used in the distribution review:
+
+Visual Studio Community 2026 license terms:
+https://visualstudio.microsoft.com/license-terms/vs2026-ga-community/
+Visual Studio 2026 redistribution list:
+https://learn.microsoft.com/en-us/visualstudio/releases/2026/redistribution
+Windows SDK license terms, including Distributable Code section 2(a):
+https://learn.microsoft.com/en-us/legal/windows-sdk/license
+Windows SDK redistribution list:
+https://learn.microsoft.com/en-us/legal/windows-sdk/redist
+
+Those grants are subject to their applicable conditions. These references
+identify the terms reviewed; they do not establish an entitlement to every
+historic binary with the same name. The SDK distribution terms include a
+requirement for protective recipient terms and distributor obligations.
+
+This file is an informational component notice, not a new license grant,
+proof of redistribution permission, or evidence of contractual acceptance.
+It imposes no additional restrictions on PageHearth's MPL-covered source.

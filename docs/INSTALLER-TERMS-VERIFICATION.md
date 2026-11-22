@@ -1,0 +1,3 @@
+# Installer agreement verification
+
+Installer SHA-256: 382339363260A085876728CA14868E315ED5344D24C628CF8C0C56CB427C987D. Size: 401140299 bytes. Agreement SHA-256: 4BE4F0CAA2398B96B30A678AEC1516050E2F2253D80B5EBE686775512CFD43C9. Application archive unchanged from updater baseline. 415 runtime entries including 316 JRE files verify. Standard NSIS license page and updated/silent bypass protection checked. Build, 61 focused tests and 11 WinShell adapter tests pass. Native Agree/Decline remains unverified because UI capture targeted unrelated foreground content; no interaction followed. the developer native review and final wording approval pending. Repository/release PRIVATE/DRAFT.

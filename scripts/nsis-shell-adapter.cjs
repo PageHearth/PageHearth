@@ -21,6 +21,9 @@ async function withShellTemplates(destination,run){
  if(fs.existsSync(destination))throw Error('Preserve previous template evidence');
  fs.cpSync(original,destination,{recursive:true});
  for(const [f,text]of Object.entries(changed))fs.writeFileSync(path.join(destination,f),text);
+ if(require('../package.json').build.nsis.license){
+  fs.writeFileSync(path.join(destination,'assistedInstaller.nsh'),require('./nsis-license-adapter.cjs').requireInteractiveLicense(fs.readFileSync(path.join(original,'assistedInstaller.nsh'),'utf8')));
+ }
  fs.copyFileSync(path.resolve('build/pagehearth-shell.nsh'),path.join(destination,'include/pagehearth-shell.nsh'));
  util.nsisTemplatesDir=destination;
  try{return await run();}finally{util.nsisTemplatesDir=original;}

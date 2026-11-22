@@ -1,0 +1,93 @@
+PAGEHEARTH - MICROSOFT RUNTIME COMPONENT TERMS
+Version 1 - November 21, 2026
+
+Please read these terms. Select I Agree to accept them and continue installation.
+Select Cancel to decline and stop installation. No online acceptance record is
+sent. A copy is installed with PageHearth's offline licensing documentation.
+
+1. LIMITED SCOPE AND PARTIES
+These terms are between you and the individual developer distributing PageHearth
+under the personal brand PixelFF. PixelFF is not a separate company. They apply
+ONLY to the Microsoft Visual C++ and Universal C Runtime binaries listed below
+(the Microsoft Components). Microsoft and its suppliers retain ownership of
+those components. Copyright: (c) Microsoft Corporation. All rights reserved.
+
+These terms do NOT restrict PageHearth's original MPL-2.0 application source,
+OpenJDK, fonts, other independently licensed components, or your manuscripts.
+Their respective licenses and your rights under them remain unchanged. Nothing
+here requires an account, payment, online consent tracking or transmission of
+your project content. Microsoft is not the publisher or sponsor of PageHearth.
+
+2. COMPONENTS AND PERMITTED USE
+The bundled Temurin runtime includes msvcp140.dll, vcruntime140.dll and
+vcruntime140_1.dll (file version 14.40.33810.0); ucrtbase.dll (10.0.26100.1742);
+and api-ms-win-crt-*-l1-1-0.dll interfaces for conio, convert, environment,
+filesystem, heap, locale, math, multibyte, private, process, runtime, stdio,
+string, time and utility. These are separately licensed Microsoft binaries,
+not MPL-licensed PageHearth source or GPL-licensed OpenJDK source.
+
+You may install and use the Microsoft Components as supplied with PageHearth
+on Windows and retain backup copies of that package. They are licensed, not
+sold. No ownership, trademark rights or other rights are granted by implication.
+Any independent Microsoft license you hold remains available on its own terms.
+
+3. PROTECTION OF MICROSOFT COMPONENTS
+Except to the extent applicable law or an applicable component license permits
+otherwise, you must not modify, reverse engineer, decompile or disassemble the
+Microsoft Components, derive their source, bypass their technical limitations,
+rent, lease or lend them separately, or make them available as a standalone
+product or hosting service. Preserve all copyright, patent, trademark and other
+proprietary notices. Do not use Microsoft's names or marks to imply endorsement.
+Do not relicense these Microsoft binaries under MPL, GPL or another license
+requiring their source disclosure or granting others rights to modify them.
+This restriction concerns only these binaries, never separately licensed code.
+Do not use or distribute them in malicious, deceptive or unlawful software.
+Comply with applicable export controls, sanctions and end-user/end-use rules.
+
+4. ONWARD DISTRIBUTION
+Redistribution of the Microsoft Components is permitted only to the extent
+authorized by the applicable Microsoft redistribution grant. This agreement
+does not create an independent entitlement to Microsoft files. When exercising
+an applicable grant, distribute these unmodified components only with PageHearth
+or a permitted application that adds significant primary functionality, on
+Windows; preserve the complete setup package where the grant requires it.
+Preserve notices and require your distributors and external end users to agree
+to terms protecting the Microsoft Components at least as much as the applicable
+Microsoft agreement. Satisfy the grant's remaining distribution conditions,
+including applicable copyright notices and any distributor indemnity/defense
+obligation to Microsoft. Merely using PageHearth does not make you a distributor
+or impose an indemnity for the developer's distribution on you.
+
+5. MICROSOFT WARRANTY AND LIABILITY PROTECTIONS
+To the extent permitted by applicable law, the Microsoft Components are provided
+as is, at your risk, without express warranties, guarantees or conditions from
+Microsoft or its suppliers; implied warranties of merchantability, fitness for
+a particular purpose and non-infringement are excluded. To that extent, recovery
+from Microsoft and its suppliers is limited to direct damages up to US $5.00;
+consequential, lost-profit, special, indirect and incidental damages are excluded,
+even if their possibility was known. These limits concern Microsoft Components
+only and do not replace other components' licenses or mandatory legal remedies.
+
+6. MANDATORY RIGHTS AND REGIONAL PROTECTIONS
+Nothing excludes or limits rights or liabilities that cannot lawfully be
+excluded or limited, including applicable consumer guarantees. Australian
+Consumer Law guarantees remain intact. In Germany and Austria, statutory
+liability for intentional misconduct, gross negligence, product liability,
+death or personal injury remains intact; liability for breach of essential
+contractual obligations remains subject to applicable law. Any mandatory local
+rights to inspect, reverse engineer or obtain remedies prevail over conflicting
+restrictions above. No additional restriction is imposed on open-source rights.
+
+7. REFERENCES AND INSTALLED COPY
+The applicable Microsoft grants and component licenses govern the rights of the
+distributor; these scoped recipient terms do not replace or expand those grants.
+The reviewed official texts and redistribution lists are available at:
+https://visualstudio.microsoft.com/license-terms/vs2026-ga-community/
+https://learn.microsoft.com/en-us/visualstudio/releases/2026/redistribution
+https://learn.microsoft.com/en-us/legal/windows-sdk/license
+https://learn.microsoft.com/en-us/legal/windows-sdk/redist
+
+Use About > License information > Open offline licenses and source information
+to find this agreement and MICROSOFT_RUNTIME_TERMS.txt under supplemental/microsoft.
+The separate informational notice is not proof of redistribution permission or
+contractual acceptance. This agreement is not a certification by Microsoft.

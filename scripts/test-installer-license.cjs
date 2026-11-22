@@ -1,0 +1,16 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const {requireInteractiveLicense}=require('./nsis-license-adapter.cjs');
+const pkg=require('../package.json');
+assert.equal(pkg.build.nsis.oneClick,false);assert.equal(pkg.build.nsis.script,undefined);
+const template=fs.readFileSync('node_modules/app-builder-lib/templates/nsis/assistedInstaller.nsh','utf8');
+const adapted=requireInteractiveLicense(template);
+assert.match(adapted,/!ifmacrodef licensePage\s+;[^\r\n]+\s+!insertmacro licensePage/);
+assert.equal((adapted.match(/!insertmacro skipPageIfUpdated/g)||[]).length,1);
+assert.throws(()=>requireInteractiveLicense(template+' '),/Unreviewed/);
+const include=fs.readFileSync('build/pagehearth.nsh','utf8');
+assert.match(include,/!macro customInit\s+SetSilent normal\s+!macroend/);
+const terms=fs.readFileSync(pkg.build.nsis.license,'utf8');
+for(const text of ['ONLY','MPL-2.0','I Agree','Cancel','14.40.33810.0','10.0.26100.1742','MANDATORY RIGHTS'])assert.ok(terms.includes(text),text);
+const builder=fs.readFileSync('node_modules/app-builder-lib/out/targets/nsis/nsisLicense.js','utf8');
+assert.ok(builder.includes('!insertmacro MUI_PAGE_LICENSE'));
+console.log('PASS: standard license wiring, fail-closed template guard, updated/silent bypass protection, component scope and notices. Native GUI acceptance/decline must be separately observed.');

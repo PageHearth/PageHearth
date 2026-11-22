@@ -1,5 +1,14 @@
 # Microsoft-only recipient terms — PROPOSAL, NOT APPROVED
 
+Current installer-review supplement (November 21, 2026): the replacement Beta 1
+candidate now presents `supplemental/microsoft/MICROSOFT_RUNTIME_AGREEMENT.txt`
+using a standard NSIS license page. Its final wording awaits the developer's approval.
+The earlier outline and delivery recommendation below are retained as historical
+evidence, not the current implementation plan. No individual agreement database,
+external consent system or individualized Microsoft permission is required by
+this implementation. The existing VC entitlement uncertainty is not a demonstrated
+prohibition and this candidate does not claim definitive legal certification.
+
 Distribution permission: BLOCKED pending narrowly targeted licensing clarification.
 This informational proposal is not an executed agreement or an assertion that
 the owner has accepted Microsoft terms. Do not distribute this internal candidate.
@@ -42,14 +51,14 @@ Proposed recipient scope, subject to qualified review and the developer's approv
 These bullets are a drafting outline, NOT a representation that every required
 protection has been captured. Final terms must be checked against the actual
 applicable agreements, including their limitations and jurisdictional exceptions.
-The developer must separately review any distributor indemnity/defense undertaking.
+the developer must separately review any distributor indemnity/defense undertaking.
 
 Recommended delivery: after entitlement and wording are settled, present the
 approved Microsoft-only addendum and linked/full applicable texts before granting
 beta download access, with explicit recorded recipient agreement and a downloadable
 copy. Include the same approved text with the installer/source receipt. Do not
 rely on an informational README as assent. No installer redesign or agreement
-collection has been implemented. The developer must approve wording and delivery mechanism.
+collection has been implemented. the developer must approve wording and delivery mechanism.
 
 ## Official sources reviewed
 

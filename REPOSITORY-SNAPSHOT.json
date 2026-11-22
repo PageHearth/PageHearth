@@ -1,10 +1,10 @@
 {
   "acceptedDevelopmentRevision": "736e6a7cd818c13a13000c972abb15d9e0073059",
-  "previousOfficialSnapshot": "4485fc19f7fd0d00583d7ec403722f5cffa38495",
-  "delta": "Official repository stable-release updater, repository metadata and regression checks",
-  "installerSha256": "542373E3F3FE0BA9351D350005F86F08E8EE1F214905B314524437C1FC8967A7",
+  "previousOfficialSnapshot": "6036042836f892f0c2ff16dfd88dc340f7c2278e",
+  "delta": "Microsoft-only standard NSIS license page, offline legal materials and guarded installer configuration",
+  "installerSha256": "382339363260A085876728CA14868E315ED5344D24C628CF8C0C56CB427C987D",
   "history": "Curated official history only; no original development history",
   "applicationVersion": "0.1.2",
   "electronVersion": "44.11.1",
-  "nativeAcceptance": "Pending for updated candidate"
+  "nativeAcceptance": "Pending for replacement; prior updater baseline user-reported 5/5 PASS"
 }

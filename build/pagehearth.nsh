@@ -2,6 +2,11 @@
 ; Notify Explorer after all association values have been installed.
 !include nsDialogs.nsh
 !include pagehearth-experience.nsh
+; Standard MUI license page supplied by electron-builder's nsis.license.
+; Never silently bypass the newly introduced recipient terms.
+!macro customInit
+  SetSilent normal
+!macroend
 !ifndef BUILD_UNINSTALLER
 Var PageHearthDesktopChoice
 Var PageHearthDesktopCheckbox

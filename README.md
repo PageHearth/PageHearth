@@ -17,3 +17,6 @@ Use copies or disposable projects initially, maintain independent backups, and w
 The updated Beta 1 checks https://api.github.com/repos/PageHearth/PageHearth/releases/latest for stable releases only. A future stable v1.0.0 is detected from installed 0.1.2; Download opens the official GitHub release page in the external browser. Drafts and prereleases are excluded. Before a stable release exists, a GitHub 404 is shown as no published release. There are no automatic installer downloads or installation and no website dependency.
 
 Publication is pending final review. See the accompanying release notes for exact installer/source filenames and hashes. Existing review-status statements and unresolved recipient-term records are not replaced by a claim of legal clearance.
+
+
+Microsoft-only installer agreement review: see docs/licensing/MICROSOFT-INSTALLER-AGREEMENT-REVIEW.md and assets/licenses/microsoft/MICROSOFT_RUNTIME_AGREEMENT.txt. Replacement installer acceptance remains pending; prior 5/5 native acceptance applies to the updater baseline. No legal certification is asserted.

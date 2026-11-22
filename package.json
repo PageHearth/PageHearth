@@ -95,6 +95,7 @@
       }
     ],
     "nsis": {
+      "license": "assets/licenses/microsoft/MICROSOFT_RUNTIME_AGREEMENT.txt",
       "installerIcon": "assets/branding/pagehearth/PageHearth_Install_Icon.ico",
       "createDesktopShortcut": true,
       "shortcutName": "PageHearth",
